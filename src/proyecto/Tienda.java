@@ -10,7 +10,7 @@ import java.io.*;
 *
 *
 */
-public class Tienda {
+public class Tienda{
     
     private String direc;
     private String id;
@@ -18,9 +18,6 @@ public class Tienda {
     private ListaTrabajadores listaTrabajadores;
     private ListaArticulos listaArticulos;
     private ListaFacturas listaFacturas;
-    //ArrayList<Articulo> listaArticulos = new ArrayList<>();
-    //ArrayList<Trabajador> listaTrabajadores = new ArrayList<>();
-    //ArrayList<Factura> listaDeFacturas = new ArrayList<>();
     
     public Tienda(String id){
         this.id = id;
@@ -46,6 +43,7 @@ public class Tienda {
     public String getDirecc() {
     	return direc;
     }
+    
     /*public int getInventory() {
     	return listaArticulos.size();
     }

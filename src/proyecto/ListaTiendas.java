@@ -20,7 +20,6 @@ public class ListaTiendas {
     }
     
     public Tienda crearTienda(Trabajador Gerente, String DireccionTienda, String IDTienda){
-        //CREAR TRABAJADOR Y SUS REESTRICCIONES EN CLASE EMPRESA.
         Tienda tienda = new Tienda(IDTienda);
         tienda.setGerente(Gerente);
         tienda.setDirec(DireccionTienda);
@@ -28,7 +27,6 @@ public class ListaTiendas {
     }
     
     public void agregarTienda(Tienda TObj){
-        //VERIFICAR QUE NO ESTÉ LA TIENDA EN CLASE EMPRESA.
         listaTiendas.add(TObj);
         
     }
@@ -44,6 +42,19 @@ public class ListaTiendas {
         }
     	
     	return null; 
+    }
+    public Trabajador buscarGerente(String Rut){
+
+        Trabajador ger;
+        ListIterator<Tienda> itr=listaTiendas.listIterator();
+        while(itr.hasNext()){
+            ger = itr.next().getGerente();
+            if(ger.getRut().equals(Rut)){
+                return ger;
+            }
+            
+        }
+        return null;
     }
     public boolean eliminarTienda(String IDTienda){
         if(listaTiendas.size()<1){            

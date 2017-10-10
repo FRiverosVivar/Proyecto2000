@@ -19,6 +19,8 @@ public class ListaFacturas {
     }
     public void agregarFactura(Trabajador TObj, String IDFact, Articulo AObj){
         //TOBJ Y AOBJ DEBE SER VERIFICADO EN SHOP
+        //BUSCAR IDFACT PARA EVITAR ID'S IGUALES
+        //BUSCARFACTURA(IDFACT);
         Factura nuevo = new Factura(IDFact,0,TObj);
         nuevo.addItem(AObj);
         listaDeFacturas.add(nuevo);

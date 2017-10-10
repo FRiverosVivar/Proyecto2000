@@ -32,7 +32,7 @@ public class ListaArticulos {
         }
         return null;
     }
-    public void addArticulo (Articulo obj){
+    public void agregarArticulo (Articulo obj){
         Articulo item = obj;
        
         if(buscarArticulo(item.getCodigo())!=null) {

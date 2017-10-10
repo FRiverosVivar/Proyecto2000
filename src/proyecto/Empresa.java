@@ -35,14 +35,19 @@ public class Empresa {
         if(listaTiendas.buscarTienda(ID) != null){
             return -1;
         }
-                
+          
+        if(listaTiendas.buscarGerente(rut) != null){
+            return -1;
+        }
+        
         Trabajador TObj = new Trabajador();
         TObj.setName(nomGer);
         TObj.setRut(rut);
         TObj.setCargo("Administrador Tienda [ID: "+ID+"]");
         TObj.setSueldo(Integer.parseInt(sueldo));
-        Tienda tienda = new Tienda(ID);
-        listaTiendas.agregarTienda(tienda);
+        
+        
+        listaTiendas.agregarTienda(listaTiendas.crearTienda(TObj, dir, ID));
         return 1;
         
     }

@@ -23,7 +23,8 @@ public class ListaTrabajadores {
          listaTrabajadores = new ArrayList<>();
     }
     public void agregarTrabajador(Trabajador obj){
-        //BUSCAR TRABAJADOR EN SHOP ANTES DE AGREGAR.
+        
+        //BUSCAR TRABAJADOR EN ESTA CLASE
     	listaTrabajadores.add(obj);
     }
     public Trabajador crearTrabajador(String Nombre, String Rut, String Cargo, String Sueldo){

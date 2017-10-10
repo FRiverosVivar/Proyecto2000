@@ -27,7 +27,7 @@ public class Proyecto {
         Empresa bestEmpresa = new Empresa();
     	ventanaLogin ventana = new ventanaLogin(bestEmpresa);
         ventana.setVisible(true);
-        int option;
+        /*int option;
         do {
         	
         	System.out.println("\tBienvenido al Men� de Administraci�n\n");
@@ -78,12 +78,12 @@ public class Proyecto {
         		}
         	}
         
-        }while(option != 0);
+        }while(option != 0);*/
                 
     }
-    public static int getOption() throws NumberFormatException, IOException {
+    /*public static int getOption() throws NumberFormatException, IOException {
     	
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	return Integer.parseInt(br.readLine());
-    }    
+    }*/
 }
