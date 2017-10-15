@@ -5,11 +5,19 @@
  */
 package proyecto;
 
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,19 +51,20 @@ public class ListaTiendas {
     public DefaultListModel modelVentana(){
         DefaultListModel<String> mdl = new DefaultListModel<>();
         String element = "No hay tiendas registradas actualmente.";
+        if(listaTiendas.size()<1){
+            mdl.addElement(element);
+            return mdl;
+        }
         Tienda aux;
         Trabajador worker;
-        ListIterator<Tienda> itr=listaTiendas.listIterator();
-        
+        ListIterator<Tienda> itr=listaTiendas.listIterator();        
         while (itr.hasNext()) {
             aux = itr.next();
             worker = aux.getGerente();
             element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
                     "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaTrabajadores()+"] - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
+            mdl.addElement(element);
         }
-        
-        mdl.addElement(element);
-        
         return mdl;
     }
     public int obtenerTamañoListaTiendas(){
@@ -106,7 +115,7 @@ public class ListaTiendas {
         }
         return false;
     }
-    public void guardarTiendasEnArchivo() throws IOException{
+    public void mostrarTiendasEnArchivo() throws IOException{
         try (FileWriter writer = new FileWriter("TiendasRegistradas.txt")) {
                 if(listaTiendas.size()<1){
                     writer.write("No hay tiendas registradas actualemente");
@@ -126,5 +135,35 @@ public class ListaTiendas {
                 }
             writer.close();
         } catch (IOException ex){}
+    }
+    public void guardarTiendas() throws FileNotFoundException, IOException{ 
+        Tienda aux;
+        ListIterator<Tienda> itr=listaTiendas.listIterator();           
+        FileOutputStream fos = new FileOutputStream(new File("Tiendas.txt"));
+        try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            while (itr.hasNext()) {
+                aux = itr.next();
+                oos.writeObject(aux);
+                System.out.println(""+aux.getID());
+            }
+            oos.close();
+        }
+	fos.close();
+    }
+    public void cargarTiendas() throws FileNotFoundException, IOException, ClassNotFoundException{
+        
+        FileInputStream fi = new FileInputStream(new File("Tiendas.txt"));
+        
+        try(ObjectInputStream oi = new ObjectInputStream(fi)){
+            Tienda aux;
+            while((aux = (Tienda) oi.readObject()) != null){
+                System.out.println(""+aux.getID());
+                listaTiendas.add(aux);
+            }
+        }catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null,"Archivo con datos a cargar no encontrado.");
+        }catch (EOFException e) {
+            
+	}
     }
 }

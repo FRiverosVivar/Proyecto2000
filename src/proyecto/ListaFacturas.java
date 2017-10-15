@@ -5,6 +5,7 @@
  */
 package proyecto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -12,7 +13,7 @@ import java.util.ListIterator;
  *
  * @author Zekro
  */
-public class ListaFacturas {
+public class ListaFacturas implements Serializable{
     private ArrayList<Factura> listaDeFacturas;
     public ListaFacturas(){
         listaDeFacturas = new ArrayList<>();

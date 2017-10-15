@@ -10,7 +10,7 @@ import java.io.*;
 *
 *
 */
-public class Tienda{
+public class Tienda implements Serializable{
     
     private String direc;
     private String id;

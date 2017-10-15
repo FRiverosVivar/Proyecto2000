@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -16,7 +17,7 @@ import java.util.ListIterator;
  *
  * @author Zekro
  */
-public class ListaArticulos {
+public class ListaArticulos implements Serializable {
     private ArrayList<Articulo> listaArticulos;
     
     public ListaArticulos(){

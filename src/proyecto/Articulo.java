@@ -1,10 +1,12 @@
 package proyecto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Proyect X 2.0 next level of Greatness
  */
-public class Articulo {
+public class Articulo implements Serializable {
     private String nombre;
     private String codigo;
     private int stock;

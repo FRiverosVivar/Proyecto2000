@@ -7,6 +7,9 @@ package proyecto.Ventanas;
 
 import proyecto.Ventanas.ventanaMenuPrincipal;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto.Empresa;
 
@@ -152,6 +155,11 @@ public class ventanaAgregarTienda extends javax.swing.JFrame {
         }
         
         JOptionPane.showMessageDialog(null,"Tienda Agregada Exitosamente.");
+        try {
+            best.guardarTiendas();
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaAgregarTienda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mnAdd_jB_agregarTiendaActionPerformed
 
     private void mnAdd_mnPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAdd_mnPrincipalActionPerformed

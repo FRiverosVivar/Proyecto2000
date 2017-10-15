@@ -6,6 +6,7 @@
 package proyecto;
 //import java.util.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
 
@@ -71,8 +72,14 @@ public class Empresa {
         DefaultListModel<String> mdl = listaTiendas.modelVentana();        
         return mdl;
     }
-    public void guardarTiendasEnArchivo() throws IOException{        
-        listaTiendas.guardarTiendasEnArchivo();           
+    public void mostrarTiendasEnArchivo() throws IOException{        
+        listaTiendas.mostrarTiendasEnArchivo();           
+    }
+    public void guardarTiendas() throws IOException{
+        listaTiendas.guardarTiendas();
+    }
+    public void cargarTiendas() throws IOException, FileNotFoundException, ClassNotFoundException{
+        listaTiendas.cargarTiendas();
     }
     /*public int getShops() {
     	return listaDeShop.size();

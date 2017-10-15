@@ -1,6 +1,7 @@
 package proyecto;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Zekro
  */
-public class Factura {
+public class Factura implements Serializable {
     
     private String ID;
     private int Ganancia;

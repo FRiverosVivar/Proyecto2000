@@ -5,11 +5,13 @@
  */
 package proyecto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Zekro
  */
-public class Trabajador {
+public class Trabajador implements Serializable{
        private String name;
        private String rut;
        private String cargo;

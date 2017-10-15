@@ -122,7 +122,7 @@ public class ventanaMostrarTiendas extends javax.swing.JFrame {
     @SuppressWarnings("empty-statement")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            best.guardarTiendasEnArchivo();
+            best.mostrarTiendasEnArchivo();
             JOptionPane.showMessageDialog(null,"Archivo creado exitosamente (guardado en carpeta del proyecto).");
             /*try {
             try (FileWriter writer = new FileWriter("TiendasRegistradas.txt")) {

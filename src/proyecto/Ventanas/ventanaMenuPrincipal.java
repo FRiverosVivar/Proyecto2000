@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto.Empresa;
 
@@ -103,6 +105,11 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mn_jB_cerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_cerrarsesionActionPerformed
+        try {
+            best.guardarTiendas();
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.exit(0);
     }//GEN-LAST:event_mn_jB_cerrarsesionActionPerformed
 
