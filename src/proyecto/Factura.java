@@ -45,13 +45,12 @@ public class Factura {
      public int getSize(){
          return listaVendidos.size();
      }
-     public void addItem(Articulo o){
+     public int addItem(Articulo o){
          if(o.getStock()<1){
-             System.out.println("\n\tError al agregar el articulo a la factura"
-                     + " dado que no posee stock.");
-             return;
+             return -1;
          }
          listaVendidos.add(o);
          Ganancia+=(o.getPrecioConDscto() - o.getPrecioCosto());
+         return 1;
      }
 }

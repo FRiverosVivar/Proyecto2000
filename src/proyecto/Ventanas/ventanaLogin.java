@@ -10,7 +10,6 @@ package proyecto.Ventanas;
  *
  * @author Zekro
  */
-import proyecto.Ventanas.ventanaMenuPrincipal;
 import java.awt.*;
 import javax.swing.JOptionPane;
 import proyecto.Empresa;

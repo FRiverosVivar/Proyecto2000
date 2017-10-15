@@ -32,9 +32,9 @@ public class ventanaMostrarTiendas extends javax.swing.JFrame {
         initComponents();
         best = bestEmpresa;
         mnPrintOpt_overlay.setBackground(new Color(0,0,0,100));
-        DefaultListModel<String> mdl = new DefaultListModel<>();
+        DefaultListModel<String> mdl = best.crearMdl();
         mnPrintOpt_jList.setModel(mdl);
-        String element = null;
+        /*String element = null;
         Tienda aux;
     	Trabajador worker;
         ArrayList<Tienda> shopList = best.getShopArrayList();
@@ -49,7 +49,7 @@ public class ventanaMostrarTiendas extends javax.swing.JFrame {
         }else{
             element = "No hay ninguna tienda registrada actualmente.";
         }
-        mdl.addElement(element);
+        mdl.addElement(element);*/
         
     }
 
@@ -121,30 +121,36 @@ public class ventanaMostrarTiendas extends javax.swing.JFrame {
 
     @SuppressWarnings("empty-statement")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try { 
+        try {
+            best.guardarTiendasEnArchivo();
+            JOptionPane.showMessageDialog(null,"Archivo creado exitosamente (guardado en carpeta del proyecto).");
+            /*try {
             try (FileWriter writer = new FileWriter("TiendasRegistradas.txt")) {
-                ArrayList<Tienda> shopu = new ArrayList<>();
-                shopu = best.getShopArrayList();
-                String element = null;
-                Tienda aux;
-                Trabajador worker;
-                if(shopu.size()<1){
-                    writer.close();
-                    JOptionPane.showMessageDialog(null,"No hay tiendas para guardar en un archivo txt.");
-                    return;
-                }
-                
-                ListIterator<Tienda> itr=shopu.listIterator();
-                while (itr.hasNext()) {
-                    aux = itr.next();
-                    worker = aux.getGerente();
-                    element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
-                            "] - [Trabajadores Registrados: "+aux.getStaff()+"] - [Inventario de la Tienda: "+aux.getInventory()+"]");
-                    writer.write(element);
-                }
+            ArrayList<Tienda> shopu = new ArrayList<>();
+            shopu = best.getShopArrayList();
+            String element = null;
+            Tienda aux;
+            Trabajador worker;
+            if(shopu.size()<1){
+            writer.close();
+            JOptionPane.showMessageDialog(null,"No hay tiendas para guardar en un archivo txt.");
+            return;
+            }
+            
+            ListIterator<Tienda> itr=shopu.listIterator();
+            while (itr.hasNext()) {
+            aux = itr.next();
+            worker = aux.getGerente();
+            element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
+            "] - [Trabajadores Registrados: "+aux.getStaff()+"] - [Inventario de la Tienda: "+aux.getInventory()+"]");
+            writer.write(element);
+            }
             }
             JOptionPane.showMessageDialog(null,"Archivo creado exitosamente.");
-        } catch (IOException ex){};
+            } catch (IOException ex){};*/
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaMostrarTiendas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

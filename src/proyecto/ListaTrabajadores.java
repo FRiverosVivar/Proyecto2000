@@ -22,6 +22,9 @@ public class ListaTrabajadores {
     public ListaTrabajadores(){
          listaTrabajadores = new ArrayList<>();
     }
+    public int obtenerTamañoListaTrabajadores(){
+        return listaTrabajadores.size();
+    }
     public void agregarTrabajador(Trabajador obj){
         
         //BUSCAR TRABAJADOR EN ESTA CLASE

@@ -5,6 +5,10 @@
  */
 package proyecto;
 //import java.util.*;
+
+import java.io.IOException;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Zekro
@@ -50,6 +54,25 @@ public class Empresa {
         listaTiendas.agregarTienda(listaTiendas.crearTienda(TObj, dir, ID));
         return 1;
         
+    }
+    public Tienda buscarTienda(String ID){
+        Tienda aux = listaTiendas.buscarTienda(ID);
+        
+        return aux;
+    }
+    public int eliminarTienda(String ID){
+        if(listaTiendas.buscarTienda(ID) == null)return -1;
+        
+        listaTiendas.eliminarTienda(ID);
+        
+        return 1;
+    }
+    public DefaultListModel crearMdl(){        
+        DefaultListModel<String> mdl = listaTiendas.modelVentana();        
+        return mdl;
+    }
+    public void guardarTiendasEnArchivo() throws IOException{        
+        listaTiendas.guardarTiendasEnArchivo();           
     }
     /*public int getShops() {
     	return listaDeShop.size();

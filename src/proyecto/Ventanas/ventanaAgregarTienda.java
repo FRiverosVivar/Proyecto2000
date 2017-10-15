@@ -150,11 +150,7 @@ public class ventanaAgregarTienda extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ya existe una tienda con tal ID.");
             return;
         }
-        /*if(best.searchShop(id) != null){
-            JOptionPane.showMessageDialog(null,"Ya hay una tienda con tal ID.");
-            return;
-        }
-        best.addShopVentana(id,nomGer,dir,sueldo,rut);*/
+        
         JOptionPane.showMessageDialog(null,"Tienda Agregada Exitosamente.");
     }//GEN-LAST:event_mnAdd_jB_agregarTiendaActionPerformed
 

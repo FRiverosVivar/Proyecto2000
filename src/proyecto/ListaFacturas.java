@@ -18,13 +18,26 @@ public class ListaFacturas {
         listaDeFacturas = new ArrayList<>();
     }
     public void agregarFactura(Trabajador TObj, String IDFact, Articulo AObj){
-        //TOBJ Y AOBJ DEBE SER VERIFICADO EN SHOP
+        //TOBJ Y AOBJ DEBE SER VERIFICADO EN TIENDA
         //BUSCAR IDFACT PARA EVITAR ID'S IGUALES
         //BUSCARFACTURA(IDFACT);
         Factura nuevo = new Factura(IDFact,0,TObj);
         nuevo.addItem(AObj);
         listaDeFacturas.add(nuevo);
         
+    }
+    public int añadirArticuloFactura(Articulo AObj, String IDFact){
+        //verificar existencia de AObj(ListaArticulos)en Tienda.java
+        Factura aux = buscarFactura(IDFact);
+        
+        if(aux == null)
+            return -1;
+        
+        if(aux.addItem(AObj) == -1){
+            return -1;
+        }
+        aux.addItem(AObj);
+        return 1;
     }
     public int eliminarFactura(String ID){
         if(buscarFactura(ID)== null){

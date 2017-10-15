@@ -8,7 +8,7 @@ package proyecto.Ventanas;
 import proyecto.Ventanas.ventanaMenuPrincipal;
 import java.awt.Color;
 import java.util.ListIterator;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import proyecto.Empresa;
 
 /**
@@ -90,14 +90,14 @@ public class ventanaEliminarTienda extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Debes ingresar una ID.");
             return;
         }
-        if(best.searchShop(id) == null){
+        if(best.buscarTienda(id) == null){
             JOptionPane.showMessageDialog(null,"No existe tienda asociada a tal ID.");
             return;
         }
         
         if (JOptionPane.showConfirmDialog(null, "¿Estas seguro?", "Cuidado",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            if(best.deleteShopVentana(id)==false){
+            if(best.eliminarTienda(id) == -1){
                 JOptionPane.showMessageDialog(null,"Hubo un error con el borrado de la Tienda. Intentar denuevo.");
                 return;
             }

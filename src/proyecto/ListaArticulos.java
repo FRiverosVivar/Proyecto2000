@@ -22,6 +22,24 @@ public class ListaArticulos {
     public ListaArticulos(){
         listaArticulos = new ArrayList<>();
     }
+    public int obtenerTamañoListaArticulos(){
+        return listaArticulos.size();
+    }
+    public int eliminarArticulo(String ID){
+        if(buscarArticulo(ID)== null){
+            return -1;
+        }
+        
+        ListIterator<Articulo> itr=listaArticulos.listIterator();
+        while (itr.hasNext()) {
+            Articulo aux = itr.next();
+            if(aux.getCodigo().equals(ID)){
+                itr.remove();
+            }
+        }
+        
+        return 1;
+    }
     public Articulo buscarArticulo(String codigo) {
     	ListIterator<Articulo> itr=listaArticulos.listIterator();
         while (itr.hasNext()) {
@@ -32,15 +50,14 @@ public class ListaArticulos {
         }
         return null;
     }
-    public void agregarArticulo (Articulo obj){
+    public int agregarArticulo (Articulo obj){
         Articulo item = obj;
        
         if(buscarArticulo(item.getCodigo())!=null) {
-        	System.out.println("\n\tEl articulo ya se encuentra en la lista de productos de la tienda.");
-        	return;
+        	return -1;
         }
-        System.out.println("\n\tArticulo agregado exitosamente a la tienda");
         listaArticulos.add(item);
+        return 1;
     }
     public Articulo crearArticulo
     (String Codigo,String Nombre, String PrecioVenta, String PrecioCosto, String Stock, String Descuento){

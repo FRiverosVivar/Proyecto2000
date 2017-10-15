@@ -25,6 +25,8 @@ public class Proyecto {
      */
     public static void main(String[] args) throws NumberFormatException, IOException, InterruptedException {
         Empresa bestEmpresa = new Empresa();
+        bestEmpresa.setCEO("Steve Jobs");
+        bestEmpresa.setNombre("EasyShop v1.5a");
     	ventanaLogin ventana = new ventanaLogin(bestEmpresa);
         ventana.setVisible(true);
         /*int option;

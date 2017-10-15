@@ -5,8 +5,11 @@
  */
 package proyecto;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -18,14 +21,46 @@ public class ListaTiendas {
     public ListaTiendas(){
         listaTiendas = new ArrayList();
     }
-    
+    /*****SOBRECARGA
+     * @param Gerente
+     * @param DireccionTienda
+     * @param IDTienda
+     * @return  ******/
     public Tienda crearTienda(Trabajador Gerente, String DireccionTienda, String IDTienda){
         Tienda tienda = new Tienda(IDTienda);
         tienda.setGerente(Gerente);
         tienda.setDirec(DireccionTienda);
         return tienda;
     }
+    public Tienda crearTIenda(String DireccionTienda, String IDTienda){
+        Tienda tienda = new Tienda(IDTienda);
+        tienda.setDirec(DireccionTienda);
+        return tienda;
+    }
     
+    /*****SOBRECARGA
+     * @return *****/
+    public DefaultListModel modelVentana(){
+        DefaultListModel<String> mdl = new DefaultListModel<>();
+        String element = "No hay tiendas registradas actualmente.";
+        Tienda aux;
+        Trabajador worker;
+        ListIterator<Tienda> itr=listaTiendas.listIterator();
+        
+        while (itr.hasNext()) {
+            aux = itr.next();
+            worker = aux.getGerente();
+            element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
+                    "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaTrabajadores()+"] - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
+        }
+        
+        mdl.addElement(element);
+        
+        return mdl;
+    }
+    public int obtenerTamañoListaTiendas(){
+        return listaTiendas.size();
+    }
     public void agregarTienda(Tienda TObj){
         listaTiendas.add(TObj);
         
@@ -70,5 +105,26 @@ public class ListaTiendas {
                 }
         }
         return false;
+    }
+    public void guardarTiendasEnArchivo() throws IOException{
+        try (FileWriter writer = new FileWriter("TiendasRegistradas.txt")) {
+                if(listaTiendas.size()<1){
+                    writer.write("No hay tiendas registradas actualemente");
+                    writer.close();
+                }
+                String element;
+                Tienda aux;
+                Trabajador worker;
+                ListIterator<Tienda> itr=listaTiendas.listIterator();
+                while (itr.hasNext()) {
+                    aux = itr.next();
+                    worker = aux.getGerente();
+                    element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
+                            "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaTrabajadores()+"]"
+                            + " - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
+                    writer.write(element);
+                }
+            writer.close();
+        } catch (IOException ex){}
     }
 }

@@ -43,7 +43,49 @@ public class Tienda{
     public String getDirecc() {
     	return direc;
     }
-    
+    public int obtenerTamañoListaTrabajadores(){
+        return listaTrabajadores.obtenerTamañoListaTrabajadores();
+    }
+    public int obtenerTamañoListaArticulos(){
+        return listaTrabajadores.obtenerTamañoListaTrabajadores();
+    }
+    public int añadirTrabajadorTienda(String Nombre, String Rut, String Cargo, String Sueldo){
+        if(listaTrabajadores.buscarTrabajador(Rut) != null)return -1;
+        
+        Trabajador aux = listaTrabajadores.crearTrabajador(Nombre, Rut, Cargo, Sueldo);
+        listaTrabajadores.agregarTrabajador(aux);
+        
+        return 1;
+        
+    }
+    public int añadirTrabajadorTienda(String Nombre, String Rut, String Cargo){
+        if(listaTrabajadores.buscarTrabajador(Rut) != null)return -1;
+        
+        Trabajador aux = listaTrabajadores.crearTrabajador(Nombre, Rut, Cargo, "0");
+        listaTrabajadores.agregarTrabajador(aux);
+        
+        return 1;
+        
+    } 
+    public int añadirArticulosTienda(String Codigo,String Nombre, String PrecioVenta, String PrecioCosto, String Stock, String Descuento){
+        if(listaArticulos.buscarArticulo(Codigo) != null)return -1;
+        
+        Articulo aux = listaArticulos.crearArticulo(Codigo, Nombre, PrecioVenta, PrecioCosto, Stock, Descuento);
+        listaArticulos.agregarArticulo(aux);
+        
+        return 1;
+    }
+    public int añadirFactura(String Rut, String Codigo, String IDFact){
+        Articulo AObj = listaArticulos.buscarArticulo(Codigo);
+        Trabajador TObj = listaTrabajadores.buscarTrabajador(Rut);
+        if(AObj == null | TObj == null )return -1; // en caso de no existir el trabajador o el articulo, se retorna -1
+        
+        if(listaFacturas.buscarFactura(IDFact) != null)return -1;   //en caso de existir la factura se retorna
+                                                                    // ya que la f(x) es dedicada a la creacion de facturas.
+        listaFacturas.agregarFactura(TObj, IDFact, AObj);
+        
+        return 1;
+    }
     /*public int getInventory() {
     	return listaArticulos.size();
     }
