@@ -46,9 +46,14 @@ public class ventanaEliminarTienda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(880, 610));
+        setPreferredSize(new java.awt.Dimension(880, 610));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mnElim_overlay.setBackground(new java.awt.Color(0, 0, 0));
+        mnElim_overlay.setMaximumSize(new java.awt.Dimension(880, 610));
+        mnElim_overlay.setMinimumSize(new java.awt.Dimension(880, 610));
+        mnElim_overlay.setPreferredSize(new java.awt.Dimension(880, 610));
         mnElim_overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         mnElim_overlay.add(mnElim_txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 170, -1));
 

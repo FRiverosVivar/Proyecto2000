@@ -1,1 +1,1 @@
-[ID: cece] - [Gerente: cece] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0][ID: cecece] - [Gerente: cecece] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0]
+[ID: cece] - [Gerente: cece] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0][ID: 3333] - [Gerente: dddd] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0][ID: sasad] - [Gerente: jfabufihu] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0]

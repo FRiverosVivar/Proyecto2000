@@ -8,6 +8,7 @@ package proyecto;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -81,6 +82,7 @@ public class Empresa {
     public void cargarTiendas() throws IOException, FileNotFoundException, ClassNotFoundException{
         listaTiendas.cargarTiendas();
     }
+    
     /*public int getShops() {
     	return listaDeShop.size();
     }*/

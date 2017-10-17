@@ -59,6 +59,11 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         mn_overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Menu Tienda");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         mn_overlay.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 110, -1));
 
         mn_jB_cerrarsesion.setText("Salir");
@@ -130,6 +135,12 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         showShop.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ventanaIngresarMenuTienda ingresarMenuTienda = new ventanaIngresarMenuTienda(best);
+        ingresarMenuTienda.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
