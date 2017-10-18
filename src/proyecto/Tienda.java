@@ -80,15 +80,17 @@ public class Tienda implements Serializable{
     }
     
     public int calcularGananciaTienda(){
-       
-        Vendedor aux;
+       // listaVendedores es la clase que encapsula a los vendedores.
+       return listaVendedores.obtenerVentas();
+        /*Vendedor aux;
         int GananciaTotal=0;
         ListIterator<Vendedor> itr=listaVendedores.listIterator();
-     while (itr.hasNext()) {
-       aux=itr.next();  
-       GananciaTotal=GananciaTotal+aux.getGananciaDeVendedor();
-     }
-     return GananciaTotal;
+        while (itr.hasNext()) {
+            aux=itr.next();  
+            GananciaTotal=GananciaTotal+aux.getGananciaDeVendedor();
+        }
+        
+        return GananciaTotal;*/
     
     }
     /*public int añadirFactura(String Rut, String Codigo, String IDFact){

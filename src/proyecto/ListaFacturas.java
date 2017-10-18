@@ -75,4 +75,14 @@ public class ListaFacturas implements Serializable{
     
         return profit;
     }
+    public int obtenerGanancias(){
+        Factura aux;
+        int GananciaTotal=0;
+        ListIterator<Factura> itr=listaDeFacturas.listIterator();
+        while (itr.hasNext()) {
+            aux=itr.next();  
+            GananciaTotal=GananciaTotal+aux.getGanancia();
+        }
+        return GananciaTotal;
+    }
 }

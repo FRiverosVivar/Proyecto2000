@@ -31,13 +31,6 @@ public class Vendedor extends Trabajador {
     
     /*Calcula la ganancia que produjo el vendedor actual y la retorna*/
     public int getGananciaDeVendedor(){
-        Factura aux;
-        int GananciaTotal=0;
-        ListIterator<Factura> itr=listaFacturas.listIterator();
-     while (itr.hasNext()) {
-       aux=itr.next();  
-       GananciaTotal=GananciaTotal+aux.getGanancia();
-       }
-     return GananciaTotal;
+        return listaFacturas.obtenerGanancias();
     }
 }
