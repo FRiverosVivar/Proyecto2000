@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -27,9 +28,7 @@ public class ListaVendedores implements Serializable {
         return listaVendedores.size();
     }
     public void agregarVendedor(Vendedor obj){
-        
-        //BUSCAR Vendedor EN ESTA CLASE
-    	listaVendedores.add(obj);
+        listaVendedores.add(obj);
     }
     public Vendedor crearVendedor(String Nombre, String Rut, String Sueldo){
     	Vendedor nuevo = new Vendedor();
@@ -70,5 +69,33 @@ public class ListaVendedores implements Serializable {
         }
         
         return GananciaTotal;
+    }
+    public DefaultListModel MdlVentana(){
+        DefaultListModel<String> mdl = new DefaultListModel<>();
+        String element = "No hay Vendedorxs registradxs actualmente.";
+        if(listaVendedores.size()<1){
+            mdl.addElement(element);
+            return mdl;
+        }
+        Vendedor aux;
+        String szAux;
+        ListIterator<Vendedor> itr=listaVendedores.listIterator();        
+        while (itr.hasNext()) {
+            aux = itr.next();
+            element = ("[Nombre: "+aux.getName()+"] - [Rut: "+aux.getRut()+
+                    "] - [Sueldo: "+aux.getSueldo()+"]");
+            mdl.addElement(element);
+        }
+        return mdl;
+    }
+    public void eliminarVendedor(String rut){
+        Vendedor aux;
+        ListIterator<Vendedor> itr=listaVendedores.listIterator();
+        while (itr.hasNext()) {
+            aux=itr.next();  
+            if(aux.getRut().equals(rut)){
+                itr.remove();
+            }
+        }
     }
 }

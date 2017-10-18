@@ -60,7 +60,7 @@ public class ListaGerentes {
         while (itr.hasNext()) {
             Gerente aux = itr.next();
             if(aux.getTiendaACargo()== null){
-                System.out.println(""+aux.getTiendaACargo());
+                //System.out.println(""+aux.getTiendaACargo());
                 array.add(aux.getRut());
             } 
         }
@@ -90,5 +90,17 @@ public class ListaGerentes {
             mdl.addElement(element);
         }
         return mdl;
+    }
+    public void nullTiendaGerente(Gerente obj){
+        Gerente aux;
+    
+        ListIterator<Gerente> itr=listaGerentes.listIterator();        
+        while (itr.hasNext()) {
+            aux = itr.next();
+            if(aux.getRut().equals(obj.getRut())){
+                aux.setTiendaACargo(null);
+                //System.out.println("nulleandorut");
+            }
+        }
     }
 }

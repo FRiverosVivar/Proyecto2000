@@ -50,11 +50,17 @@ public class ListaTiendas {
         }
         Tienda aux;
         Gerente worker;
+        String name = new String();
         ListIterator<Tienda> itr=listaTiendas.listIterator();        
         while (itr.hasNext()) {
             aux = itr.next();
             worker = aux.getGerente();
-            element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
+            if(worker == null){
+                name = "null";
+            }else{
+                name = worker.getName();
+            }
+            element = ("[ID: "+aux.getID()+"] - [Gerente: "+name+
                     "] - [Vendedores Registrados: "+aux.obtenerTamañoListaVendedores()+""
                     + "] - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
             mdl.addElement(element);
@@ -186,4 +192,35 @@ public class ListaTiendas {
         
         
     } 
+    public ArrayList listaParaCombobox(){
+        ArrayList<String> array = new ArrayList<String>();
+        ListIterator<Tienda> itr=listaTiendas.listIterator();
+        while (itr.hasNext()) {
+            Tienda aux = itr.next();
+            array.add(aux.getID());
+        }
+        if(array.size()<1)return null;
+        
+        return array;
+    }
+    public DefaultListModel modelVendedores(String ID){
+        Tienda aux = buscarTienda(ID);
+        DefaultListModel<String> mdl = aux.modelVentana();        
+        return mdl;
+    }
+    public int agregarVendedor(String nombre, String rut, String sueldo, String IDTienda){
+        Tienda aux = buscarTienda(IDTienda);
+               
+        return aux.añadirVendedor(nombre, rut, sueldo);
+    }
+    public int eliminarVendedor(String rut,String IDTienda){
+        Tienda aux = buscarTienda(IDTienda);
+        
+        return aux.eliminarVendedor(rut);
+    }
+    public int modificarVendedor(String nombre, String rut, String sueldo,String rutnuevo, String IDTienda){
+        Tienda aux = buscarTienda(IDTienda);
+               
+        return aux.modificarVendedor(nombre, rut, sueldo,rutnuevo);
+    }
 }

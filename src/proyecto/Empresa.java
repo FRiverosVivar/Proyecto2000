@@ -78,6 +78,10 @@ public class Empresa {
         DefaultListModel<String> mdl = listaGer.modelVentana();        
         return mdl;
     }
+    public DefaultListModel crearMdlVendedores(String ID){        
+        DefaultListModel<String> mdl = listaTiendas.modelVendedores(ID);        
+        return mdl;
+    }
     public void mostrarTiendasEnArchivo() throws IOException{        
         listaTiendas.mostrarTiendasEnArchivo();           
     }
@@ -102,7 +106,13 @@ public class Empresa {
     public int eliminarGerente(String rut){
         if(listaGer.buscarGerente(rut)==null)return -1;
         
-        listaGer.eliminarGerente(rut);
+        if(listaGer.buscarGerente(rut).getTiendaACargo() != null){
+            Tienda aux = listaTiendas.buscarTienda(listaGer.buscarGerente(rut).getTiendaACargo());
+            aux.setGerente(null);
+        }
+        
+        listaGer.eliminarGerente(rut);        
+        
         return 1;
     }
     public String[] arrayGerentesParaComboBox(){
@@ -110,7 +120,7 @@ public class Empresa {
         ArrayList<String> gerLista = listaGer.listaParaCombobox();
         
         if(gerLista == null){
-            System.out.println("gerlista null");
+            //System.out.println("gerlista null");
             array = new String[1];
             array[0] = "00.000.000-0";
             return array;
@@ -120,10 +130,37 @@ public class Empresa {
         array = gerLista.toArray(new String[0]);
         return array;
     }
+    public String[] arrayTiendasParaComboBox(){
+        String array[];
+        ArrayList<String> tiendaLista = listaTiendas.listaParaCombobox();
+        
+        if(tiendaLista == null){
+            //System.out.println("gerlista null");
+            array = new String[1];
+            array[0] = "Null/SinTiendas";
+            return array;
+        }
+        
+        //array = new String[gerLista.size()];
+        array = tiendaLista.toArray(new String[0]);
+        return array;
+    }
     public void calcularPorcentajesDeGanancia(){
         int gananciaTotal=0;
         gananciaTotal=listaTiendas.gananciaTotalTiendas();
         listaTiendas.calcularPorcentajesDeGanancia(gananciaTotal);
+    }
+    public void nullTiendaGerente(Gerente obj){
+        listaGer.nullTiendaGerente(obj);
+    }
+    public int agregarVendedor(String nombre, String rut, String sueldo,String IDTienda){
+        return listaTiendas.agregarVendedor(nombre, rut, sueldo,IDTienda);
+    }
+    public int eliminarVendedor(String rut, String IDTienda){
+        return listaTiendas.eliminarVendedor(rut,IDTienda);
+    }
+    public int modificarVendedor(String nombre, String rut, String sueldo,String rutnuevo,String IDTienda){
+        return listaTiendas.modificarVendedor(nombre, rut, sueldo,rutnuevo,IDTienda);
     }
     /*calcularGananciaDeUnatienda(){
         

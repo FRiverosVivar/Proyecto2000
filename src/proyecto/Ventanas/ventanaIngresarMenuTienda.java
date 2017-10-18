@@ -8,6 +8,7 @@ package proyecto.Ventanas;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import proyecto.Empresa;
 import proyecto.Tienda;
 
@@ -20,11 +21,17 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
     /**
      * Creates new form ventanaIngresarMenuTienda
      */
+    private javax.swing.JComboBox<String> mnIMT_ComboBox1;
     Empresa best;
     public ventanaIngresarMenuTienda(Empresa bestEmpresa) {
         initComponents();
         imn_overlay.setBackground(new Color(0,0,0,100));
         best = bestEmpresa;
+        mnIMT_ComboBox1 = new javax.swing.JComboBox<>();
+        mnIMT_ComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(best.arrayTiendasParaComboBox()));
+        imn_overlay.add(mnIMT_ComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        DefaultListModel<String> mdl = best.crearMdlTiendas();
+        mnIMT_jList.setModel(mdl);
     }
 
     /**
@@ -38,6 +45,11 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
 
         imn_overlay = new javax.swing.JPanel();
         imn_volverMnPrincipal = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mnIMT_jList = new javax.swing.JList<>();
+        pnl_IDTienda = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        mnIMT_ingresarTienda = new javax.swing.JButton();
         imn_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,6 +72,25 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
         });
         imn_overlay.add(imn_volverMnPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, -1, -1));
 
+        jScrollPane1.setViewportView(mnIMT_jList);
+
+        imn_overlay.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 590, 320));
+
+        pnl_IDTienda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setText("Selecciona una IDTienda:");
+        pnl_IDTienda.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, 20));
+
+        imn_overlay.add(pnl_IDTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 40));
+
+        mnIMT_ingresarTienda.setText("Ingresar");
+        mnIMT_ingresarTienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnIMT_ingresarTiendaActionPerformed(evt);
+            }
+        });
+        imn_overlay.add(mnIMT_ingresarTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
+
         getContentPane().add(imn_overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 610));
 
         imn_bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/348529-japan-wallpaper-3840x2160-ipad-retina.jpg"))); // NOI18N
@@ -75,6 +106,39 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_imn_volverMnPrincipalActionPerformed
 
+    private void mnIMT_ingresarTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnIMT_ingresarTiendaActionPerformed
+        
+        String IDTienda = mnIMT_ComboBox1.getItemAt(mnIMT_ComboBox1.getSelectedIndex());
+        
+        if(IDTienda.equals("Null/SinTiendas")|| IDTienda == null){
+            JOptionPane.showMessageDialog(null,"No hay Tiendas registradas actualmente.\nEs estrictamente necesario que agreges una antes de ingresar a una.");
+            return;
+        }
+        /*if(aux == null){
+            JOptionPane.showMessageDialog(null,"No puedes agregar una tienda sin un gerente a cargo.");
+            return;
+        }*/
+
+        /*if(best.agregarTienda(id,dir,ger) == -1){
+            JOptionPane.showMessageDialog(null,"Error\nYa existe una tienda con tal ID.\nO el gerente que asignas ya esta con una tienda a cargo.");
+            return;
+        }*/
+        /*if(best.agregarTienda(id,dir,g) == -1){
+            JOptionPane.showMessageDialog(null,"Ya existe una tienda con tal ID.");
+            return;
+        }*/
+
+        //JOptionPane.showMessageDialog(null,"Tienda Agregada Exitosamente.");
+        /*try {
+            best.guardarTiendas();
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaAgregarTienda.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        ventanaMenuTienda vMT = new ventanaMenuTienda(best,best.buscarTienda(IDTienda));
+        vMT.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mnIMT_ingresarTiendaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -83,5 +147,10 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
     private javax.swing.JLabel imn_bg;
     private javax.swing.JPanel imn_overlay;
     private javax.swing.JButton imn_volverMnPrincipal;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton mnIMT_ingresarTienda;
+    private javax.swing.JList<String> mnIMT_jList;
+    private javax.swing.JPanel pnl_IDTienda;
     // End of variables declaration//GEN-END:variables
 }

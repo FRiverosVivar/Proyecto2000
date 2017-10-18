@@ -12,7 +12,7 @@ package proyecto.Ventanas;
 public class ventanaMenuVendedor extends javax.swing.JFrame {
 
     /**
-     * Creates new form ventanaMenuVendedor
+     * Creates new form ventanaMenuArticulos
      */
     public ventanaMenuVendedor() {
         initComponents();
@@ -27,57 +27,87 @@ public class ventanaMenuVendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mnVendedor_overlay = new javax.swing.JPanel();
+        mnVendedor_mnTienda = new javax.swing.JButton();
+        mnVendedor_AñadirVerFacturas = new javax.swing.JButton();
+        mnVendedor_ExportarFacturas = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        mnVendedor_overlay.setBackground(new java.awt.Color(0, 0, 0));
+        mnVendedor_overlay.setPreferredSize(new java.awt.Dimension(880, 610));
+        mnVendedor_overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mnVendedor_mnTienda.setText("Volver al menu anterior");
+        mnVendedor_mnTienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVendedor_mnTiendaActionPerformed(evt);
+            }
+        });
+        mnVendedor_overlay.add(mnVendedor_mnTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, -1, -1));
+
+        mnVendedor_AñadirVerFacturas.setText("Añadir/ver Factura/s");
+        mnVendedor_AñadirVerFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVendedor_AñadirVerFacturasActionPerformed(evt);
+            }
+        });
+        mnVendedor_overlay.add(mnVendedor_AñadirVerFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 160, -1));
+
+        mnVendedor_ExportarFacturas.setText("Exportar Facturas");
+        mnVendedor_ExportarFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVendedor_ExportarFacturasActionPerformed(evt);
+            }
+        });
+        mnVendedor_overlay.add(mnVendedor_ExportarFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 880, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(mnVendedor_overlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(mnVendedor_overlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnVendedor_mnTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_mnTiendaActionPerformed
+        //ventanaMenuPrincipal mn = new ventanaMenuPrincipal(best);
+        //mn.setVisible(true);
+        //this.dispose();
+    }//GEN-LAST:event_mnVendedor_mnTiendaActionPerformed
+
+    private void mnVendedor_AñadirVerFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_AñadirVerFacturasActionPerformed
+
+    }//GEN-LAST:event_mnVendedor_AñadirVerFacturasActionPerformed
+
+    private void mnVendedor_ExportarFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_ExportarFacturasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnVendedor_ExportarFacturasActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaMenuVendedor().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton mnVendedor_AñadirVerFacturas;
+    private javax.swing.JButton mnVendedor_ExportarFacturas;
+    private javax.swing.JButton mnVendedor_mnTienda;
+    private javax.swing.JPanel mnVendedor_overlay;
     // End of variables declaration//GEN-END:variables
 }

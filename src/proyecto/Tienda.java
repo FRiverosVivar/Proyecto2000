@@ -2,6 +2,7 @@
 package proyecto;
 import java.util.*;
 import java.io.*;
+import javax.swing.DefaultListModel;
 /*
 *
 *   CAMBIOS EN LA CLASE:
@@ -92,6 +93,31 @@ public class Tienda implements Serializable{
         
         return GananciaTotal;*/
     
+    }
+    public DefaultListModel modelVentana(){
+        return listaVendedores.MdlVentana();
+    }
+    public int añadirVendedor(String nombre,String rut,String sueldo){
+        if(listaVendedores.buscarVendedor(rut)!=null)return -1;
+        Vendedor aux = listaVendedores.crearVendedor(nombre, rut, sueldo);
+        listaVendedores.agregarVendedor(aux);
+        
+        return 1;
+    }
+    public int eliminarVendedor(String rut){
+        if(listaVendedores.buscarVendedor(rut)==null)return -1;
+        
+        listaVendedores.eliminarVendedor(rut);
+        return 1;
+    }
+    public int modificarVendedor(String nombre,String rut,String sueldo,String rutnuevo){
+        if(listaVendedores.buscarVendedor(rut)==null)return -1;
+        
+        Vendedor aux = listaVendedores.buscarVendedor(rut);
+        aux.setName(nombre);
+        aux.setRut(rutnuevo);
+        aux.setSueldo(Integer.parseInt(sueldo));
+        return 1;
     }
     /*public int añadirFactura(String Rut, String Codigo, String IDFact){
         Articulo AObj = listaArticulos.buscarArticulo(Codigo);

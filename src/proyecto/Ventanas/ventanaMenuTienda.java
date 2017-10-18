@@ -5,6 +5,10 @@
  */
 package proyecto.Ventanas;
 
+import java.awt.Color;
+import proyecto.Empresa;
+import proyecto.Tienda;
+
 /**
  *
  * @author Estudiante_2
@@ -14,8 +18,13 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
     /**
      * Creates new form ventanaMenuTienda
      */
-    public ventanaMenuTienda() {
+    Empresa best;
+    Tienda tienda;
+    public ventanaMenuTienda(Empresa bestEmpresa, Tienda tienda1) {
         initComponents();
+        best = bestEmpresa;
+        tienda = tienda1;
+        mnTienda_overlay.setBackground(new Color(0,0,0,100));
     }
 
     /**
@@ -27,57 +36,121 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mnTienda_overlay = new javax.swing.JPanel();
+        mnTienda_mnPrincipal = new javax.swing.JButton();
+        mnTienda_AddDelEditVendedor = new javax.swing.JButton();
+        mnTienda_menuArticulos = new javax.swing.JButton();
+        mnTienda_setearCambiarGerente = new javax.swing.JButton();
+        mnTienda_menuVendedor = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        mnTienda_overlay.setBackground(new java.awt.Color(0, 0, 0));
+        mnTienda_overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mnTienda_mnPrincipal.setText("Volver al Menu principal");
+        mnTienda_mnPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTienda_mnPrincipalActionPerformed(evt);
+            }
+        });
+        mnTienda_overlay.add(mnTienda_mnPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, -1));
+
+        mnTienda_AddDelEditVendedor.setText("Añadir/Eliminar/Modificar Vendedor");
+        mnTienda_AddDelEditVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTienda_AddDelEditVendedorActionPerformed(evt);
+            }
+        });
+        mnTienda_overlay.add(mnTienda_AddDelEditVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+
+        mnTienda_menuArticulos.setText("Menu Articulos");
+        mnTienda_menuArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTienda_menuArticulosActionPerformed(evt);
+            }
+        });
+        mnTienda_overlay.add(mnTienda_menuArticulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 120, -1));
+
+        mnTienda_setearCambiarGerente.setText("Cambiar Gerente");
+        mnTienda_setearCambiarGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTienda_setearCambiarGerenteActionPerformed(evt);
+            }
+        });
+        mnTienda_overlay.add(mnTienda_setearCambiarGerente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 120, -1));
+
+        mnTienda_menuVendedor.setText("Menu Vendedor");
+        mnTienda_menuVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTienda_menuVendedorActionPerformed(evt);
+            }
+        });
+        mnTienda_overlay.add(mnTienda_menuVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 120, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 880, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(mnTienda_overlay, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(mnTienda_overlay, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnTienda_mnPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_mnPrincipalActionPerformed
+        ventanaMenuPrincipal mnprn = new ventanaMenuPrincipal(best);
+        mnprn.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mnTienda_mnPrincipalActionPerformed
+
+    private void mnTienda_AddDelEditVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_AddDelEditVendedorActionPerformed
+           ventanaMenuArticulos_AñadirEliminarModificarArticulos mn 
+           = new ventanaMenuArticulos_AñadirEliminarModificarArticulos(best,tienda);
+           mn.setVisible(true);
+           this.dispose();
+        
+    }//GEN-LAST:event_mnTienda_AddDelEditVendedorActionPerformed
+
+    private void mnTienda_menuArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_menuArticulosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnTienda_menuArticulosActionPerformed
+
+    private void mnTienda_setearCambiarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_setearCambiarGerenteActionPerformed
+        ventanaMenuTienda_CambiarGerente mn = new ventanaMenuTienda_CambiarGerente(best,tienda);
+        mn.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mnTienda_setearCambiarGerenteActionPerformed
+
+    private void mnTienda_menuVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_menuVendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnTienda_menuVendedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuTienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuTienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuTienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaMenuTienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaMenuTienda().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton mnTienda_AddDelEditVendedor;
+    private javax.swing.JButton mnTienda_menuArticulos;
+    private javax.swing.JButton mnTienda_menuVendedor;
+    private javax.swing.JButton mnTienda_mnPrincipal;
+    private javax.swing.JPanel mnTienda_overlay;
+    private javax.swing.JButton mnTienda_setearCambiarGerente;
     // End of variables declaration//GEN-END:variables
 }
