@@ -159,5 +159,33 @@ public class ListaTiendas {
         }catch (EOFException e) {
             
 	}
+        
+        
     }
+     public int gananciaTotalTiendas(){
+           
+        int total=0; 
+     	Tienda auxshop;
+    	ListIterator<Tienda> itr=listaTiendas.listIterator();
+        while (itr.hasNext()) {
+        	auxshop = itr.next();
+                total=total+auxshop.calcularGananciaTienda();
+        }
+    	
+    	return total;     
+  
+     }
+     
+    public void calcularPorcentajesDeGanancia(int total){
+      
+        Tienda auxshop;
+    	ListIterator<Tienda> itr=listaTiendas.listIterator();
+        while (itr.hasNext()) {
+        	auxshop = itr.next();
+                auxshop.setPorcentajeGanancia((auxshop.calcularGananciaTienda()*100)/total);
+        }
+        
+        
+    } 
+    
 }
