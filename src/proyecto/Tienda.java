@@ -14,6 +14,7 @@ public class Tienda implements Serializable{
     
     private String direc;
     private String id;
+    private int porcentajeGanancia; /*no se le asigna valor inicial, se modifica*/
     private Gerente GerenteTienda;
     private ListaVendedores listaVendedores;
     private ListaArticulos listaArticulos;
@@ -23,6 +24,9 @@ public class Tienda implements Serializable{
         listaVendedores = new ListaVendedores();
         listaArticulos = new ListaArticulos();
         
+    }
+    public void setPorcentajeGanancia(int porcentajeGanancia){
+        this.porcentajeGanancia=porcentajeGanancia;
     }
     public Gerente getGerente(){
         return GerenteTienda;
@@ -73,6 +77,19 @@ public class Tienda implements Serializable{
         listaArticulos.agregarArticulo(aux);
         
         return 1;
+    }
+    
+    public int calcularGananciaTienda(){
+       
+        Vendedor aux;
+        int GananciaTotal=0;
+        ListIterator<Vendedor> itr=listaVendedores.listIterator();
+     while (itr.hasNext()) {
+       aux=itr.next();  
+       GananciaTotal=GananciaTotal+aux.getGananciaDeVendedor();
+     }
+     return GananciaTotal;
+    
     }
     /*public int añadirFactura(String Rut, String Codigo, String IDFact){
         Articulo AObj = listaArticulos.buscarArticulo(Codigo);
