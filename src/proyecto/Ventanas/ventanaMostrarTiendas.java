@@ -32,7 +32,7 @@ public class ventanaMostrarTiendas extends javax.swing.JFrame {
         initComponents();
         best = bestEmpresa;
         mnPrintOpt_overlay.setBackground(new Color(0,0,0,100));
-        DefaultListModel<String> mdl = best.crearMdl();
+        DefaultListModel<String> mdl = best.crearMdlTiendas();
         mnPrintOpt_jList.setModel(mdl);
         /*String element = null;
         Tienda aux;

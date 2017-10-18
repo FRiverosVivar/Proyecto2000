@@ -70,8 +70,12 @@ public class Empresa {
         
         return 1;
     }
-    public DefaultListModel crearMdl(){        
+    public DefaultListModel crearMdlTiendas(){        
         DefaultListModel<String> mdl = listaTiendas.modelVentana();        
+        return mdl;
+    }
+    public DefaultListModel crearMdlGerentes(){        
+        DefaultListModel<String> mdl = listaGer.modelVentana();        
         return mdl;
     }
     public void mostrarTiendasEnArchivo() throws IOException{        
@@ -120,7 +124,34 @@ public class Empresa {
         int gananciaTotal=0;
         gananciaTotal=listaTiendas.gananciaTotalTiendas();
         listaTiendas.calcularPorcentajesDeGanancia(gananciaTotal);
-    } 
+    }
+    /*calcularGananciaDeUnatienda(){
+        
+    }
+    mostrarPorcentajeDeGanancias(){
+        
+    }*/
+    /*public Tienda obtenerTiendaMayorGanancia(){
+     ListIterator<Tienda> itr=listaTiendas.listIterator();
+     int total=0;
+     Tienda mayor=null;
+     Tienda aux=null;
+     while (itr.hasNext()) {
+         if(mayor==null){
+             mayor=itr.next();
+             total=aux.calcularGananciaTienda();
+         }else{
+             aux=itr.next();
+             if(aux.calcularGananciaTienda()>mayor.calcularGananciaTienda){
+              mayor=aux;
+              total=total+mayor.calcularGananciaTienda();
+             }
+         
+        }
+     }
+     mayor.setPorcentajeGanancia((100*(mayor.calcularGananciaTienda()))/total);
+     return mayor;
+  } */
     /*public int getShops() {
     	return listaDeShop.size();
     }*/

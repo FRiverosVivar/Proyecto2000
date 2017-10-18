@@ -55,7 +55,8 @@ public class ListaTiendas {
             aux = itr.next();
             worker = aux.getGerente();
             element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
-                    "] - [Vendedores Registrados: "+aux.obtenerTamañoListaVendedores()+"] - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
+                    "] - [Vendedores Registrados: "+aux.obtenerTamañoListaVendedores()+""
+                    + "] - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
             mdl.addElement(element);
         }
         return mdl;
@@ -159,10 +160,8 @@ public class ListaTiendas {
         }catch (EOFException e) {
             
 	}
-        
-        
     }
-     public int gananciaTotalTiendas(){
+    public int gananciaTotalTiendas(){
            
         int total=0; 
      	Tienda auxshop;
@@ -187,5 +186,4 @@ public class ListaTiendas {
         
         
     } 
-    
 }

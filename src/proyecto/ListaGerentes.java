@@ -7,6 +7,7 @@ package proyecto;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -66,5 +67,28 @@ public class ListaGerentes {
         if(array.size()<1)return null;
         
         return array;
+    }
+    public DefaultListModel modelVentana(){
+        DefaultListModel<String> mdl = new DefaultListModel<>();
+        String element = "No hay Gerentes registradas actualmente.";
+        if(listaGerentes.size()<1){
+            mdl.addElement(element);
+            return mdl;
+        }
+        Gerente aux;
+        String szAux;
+        ListIterator<Gerente> itr=listaGerentes.listIterator();        
+        while (itr.hasNext()) {
+            aux = itr.next();
+            szAux = aux.getTiendaACargo();
+            if(szAux == null){
+                szAux = "Sin Tienda Asignada";
+            }
+            element = ("[Nombre: "+aux.getName()+"] - [Rut: "+aux.getRut()+
+                    "] - [Sueldo: "+aux.getSueldo()+""
+                    + "] - [IDTienda: "+szAux+"]");
+            mdl.addElement(element);
+        }
+        return mdl;
     }
 }

@@ -129,7 +129,7 @@ public class ventanaAgregarTienda extends javax.swing.JFrame {
         String rutGer = mnAdd_ComboBox1.getItemAt(mnAdd_ComboBox1.getSelectedIndex());
         Gerente ger = best.buscarGerente(rutGer);
         if(rutGer.equals("00.000.000-0")|| rutGer == null){
-            JOptionPane.showMessageDialog(null,"No hay gerentes registrados actualmente.\nEs estrictamente necesario que agreges uno antes de agregar una tienda.");
+            JOptionPane.showMessageDialog(null,"No hay gerentes registrados/disponibles actualmente.\nEs estrictamente necesario que agreges uno antes de agregar una tienda.");
             return;
         }
         /*if(aux == null){
@@ -138,7 +138,7 @@ public class ventanaAgregarTienda extends javax.swing.JFrame {
         }*/
         
         if(best.agregarTienda(id,dir,ger) == -1){
-            JOptionPane.showMessageDialog(null,"Ya existe una tienda con tal ID.");
+            JOptionPane.showMessageDialog(null,"Error\nYa existe una tienda con tal ID.\nO el gerente que asignas ya esta con una tienda a cargo.");
             return;
         }
             /*if(best.agregarTienda(id,dir,g) == -1){

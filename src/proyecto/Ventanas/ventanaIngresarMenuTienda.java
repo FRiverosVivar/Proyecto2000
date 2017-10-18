@@ -38,7 +38,6 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
 
         imn_overlay = new javax.swing.JPanel();
         imn_volverMnPrincipal = new javax.swing.JButton();
-        imn_ComboBox = new javax.swing.JComboBox<>();
         imn_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,9 +60,6 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
         });
         imn_overlay.add(imn_volverMnPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, -1, -1));
 
-        imn_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        imn_overlay.add(imn_ComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 180, -1));
-
         getContentPane().add(imn_overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 610));
 
         imn_bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/348529-japan-wallpaper-3840x2160-ipad-retina.jpg"))); // NOI18N
@@ -84,7 +80,6 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> imn_ComboBox;
     private javax.swing.JLabel imn_bg;
     private javax.swing.JPanel imn_overlay;
     private javax.swing.JButton imn_volverMnPrincipal;

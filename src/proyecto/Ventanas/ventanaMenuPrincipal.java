@@ -152,7 +152,7 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mn_jB_MenuTiendaActionPerformed
 
     private void mn_jB_AgregarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_AgregarGerenteActionPerformed
-        ventanaAgregarGerente vG = new ventanaAgregarGerente(best);
+        VentanaAgregarEliminarGerente vG = new VentanaAgregarEliminarGerente(best);
         vG.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_mn_jB_AgregarGerenteActionPerformed
