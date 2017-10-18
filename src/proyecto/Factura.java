@@ -19,13 +19,11 @@ public class Factura implements Serializable {
     private String ID;
     private int Ganancia;
     ArrayList<Articulo> listaVendidos = new ArrayList<>();
-    private Trabajador Vendedor;
     
     
-    public Factura(String ID, int Ganancia, Trabajador Vendedor){
+    public Factura(String ID, int Ganancia){
         this.ID=ID;
         this.Ganancia=Ganancia;
-        this.Vendedor=Vendedor;
     }
      
     public void setID(String ID){

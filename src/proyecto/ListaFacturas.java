@@ -18,11 +18,11 @@ public class ListaFacturas implements Serializable{
     public ListaFacturas(){
         listaDeFacturas = new ArrayList<>();
     }
-    public void agregarFactura(Trabajador TObj, String IDFact, Articulo AObj){
+    public void agregarFactura(String IDFact, Articulo AObj){
         //TOBJ Y AOBJ DEBE SER VERIFICADO EN TIENDA
         //BUSCAR IDFACT PARA EVITAR ID'S IGUALES
         //BUSCARFACTURA(IDFACT);
-        Factura nuevo = new Factura(IDFact,0,TObj);
+        Factura nuevo = new Factura(IDFact,0);
         nuevo.addItem(AObj);
         listaDeFacturas.add(nuevo);
         

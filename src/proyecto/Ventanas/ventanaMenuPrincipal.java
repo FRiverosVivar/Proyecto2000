@@ -42,11 +42,12 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         mn_overlay = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        mn_jB_MenuTienda = new javax.swing.JButton();
         mn_jB_cerrarsesion = new javax.swing.JButton();
         mn_jB_eliminarTienda = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        mn_jB_agregarTienda = new javax.swing.JButton();
+        mn_jB_VerTiendas = new javax.swing.JButton();
+        mn_jB_AgregarGerente = new javax.swing.JButton();
         mn_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,13 +59,13 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         mn_overlay.setPreferredSize(new java.awt.Dimension(880, 610));
         mn_overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Menu Tienda");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        mn_jB_MenuTienda.setText("Menu Tienda");
+        mn_jB_MenuTienda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                mn_jB_MenuTiendaActionPerformed(evt);
             }
         });
-        mn_overlay.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 110, -1));
+        mn_overlay.add(mn_jB_MenuTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 120, -1));
 
         mn_jB_cerrarsesion.setText("Salir");
         mn_jB_cerrarsesion.addActionListener(new java.awt.event.ActionListener() {
@@ -80,23 +81,31 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
                 mn_jB_eliminarTiendaActionPerformed(evt);
             }
         });
-        mn_overlay.add(mn_jB_eliminarTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 110, -1));
+        mn_overlay.add(mn_jB_eliminarTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 120, -1));
 
-        jButton3.setText("Agregar Tienda");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        mn_jB_agregarTienda.setText("Agregar Tienda");
+        mn_jB_agregarTienda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                mn_jB_agregarTiendaActionPerformed(evt);
             }
         });
-        mn_overlay.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 110, -1));
+        mn_overlay.add(mn_jB_agregarTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 120, -1));
 
-        jButton2.setText("Ver Tiendas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        mn_jB_VerTiendas.setText("Ver Tiendas");
+        mn_jB_VerTiendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                mn_jB_VerTiendasActionPerformed(evt);
             }
         });
-        mn_overlay.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 110, -1));
+        mn_overlay.add(mn_jB_VerTiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 120, -1));
+
+        mn_jB_AgregarGerente.setText("Agregar Gerente");
+        mn_jB_AgregarGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_jB_AgregarGerenteActionPerformed(evt);
+            }
+        });
+        mn_overlay.add(mn_jB_AgregarGerente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 120, -1));
 
         getContentPane().add(mn_overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 610));
 
@@ -118,11 +127,11 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_mn_jB_cerrarsesionActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void mn_jB_agregarTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_agregarTiendaActionPerformed
         ventanaAgregarTienda ventanaAgregar = new ventanaAgregarTienda(best);
         ventanaAgregar.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_mn_jB_agregarTiendaActionPerformed
 
     private void mn_jB_eliminarTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_eliminarTiendaActionPerformed
         ventanaEliminarTienda ventanaEliminar = new ventanaEliminarTienda(best);
@@ -130,17 +139,23 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mn_jB_eliminarTiendaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void mn_jB_VerTiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_VerTiendasActionPerformed
         ventanaMostrarTiendas showShop = new ventanaMostrarTiendas(best);
         showShop.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_mn_jB_VerTiendasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void mn_jB_MenuTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_MenuTiendaActionPerformed
         ventanaIngresarMenuTienda ingresarMenuTienda = new ventanaIngresarMenuTienda(best);
         ingresarMenuTienda.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_mn_jB_MenuTiendaActionPerformed
+
+    private void mn_jB_AgregarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_AgregarGerenteActionPerformed
+        ventanaAgregarGerente vG = new ventanaAgregarGerente(best);
+        vG.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mn_jB_AgregarGerenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,10 +181,11 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         });
     }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel mn_bg;
+    private javax.swing.JButton mn_jB_AgregarGerente;
+    private javax.swing.JButton mn_jB_MenuTienda;
+    private javax.swing.JButton mn_jB_VerTiendas;
+    private javax.swing.JButton mn_jB_agregarTienda;
     private javax.swing.JButton mn_jB_cerrarsesion;
     private javax.swing.JButton mn_jB_eliminarTienda;
     private javax.swing.JPanel mn_overlay;

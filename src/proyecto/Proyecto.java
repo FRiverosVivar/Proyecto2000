@@ -26,13 +26,13 @@ public class Proyecto {
      */
     public static void main(String[] args) throws NumberFormatException, IOException, InterruptedException {
         Empresa bestEmpresa = new Empresa();
-        try {
+        /*try {
             bestEmpresa.cargarTiendas();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Proyecto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Proyecto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         bestEmpresa.setCEO("Steve Jobs");
         bestEmpresa.setNombre("EasyShop v1.5a");
     	ventanaLogin ventana = new ventanaLogin(bestEmpresa);

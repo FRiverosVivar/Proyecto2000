@@ -30,24 +30,17 @@ public class ListaTiendas {
         listaTiendas = new ArrayList();
     }
     /*****SOBRECARGA
-     * @param Gerente
+     * @param GerenteTienda
      * @param DireccionTienda
      * @param IDTienda
      * @return  ******/
-    public Tienda crearTienda(Trabajador Gerente, String DireccionTienda, String IDTienda){
+    public Tienda crearTienda(Gerente GerenteTienda, String DireccionTienda, String IDTienda){
         Tienda tienda = new Tienda(IDTienda);
-        tienda.setGerente(Gerente);
+        tienda.setGerente(GerenteTienda);
         tienda.setDirec(DireccionTienda);
+        GerenteTienda.setTiendaACargo(IDTienda);
         return tienda;
     }
-    public Tienda crearTIenda(String DireccionTienda, String IDTienda){
-        Tienda tienda = new Tienda(IDTienda);
-        tienda.setDirec(DireccionTienda);
-        return tienda;
-    }
-    
-    /*****SOBRECARGA
-     * @return *****/
     public DefaultListModel modelVentana(){
         DefaultListModel<String> mdl = new DefaultListModel<>();
         String element = "No hay tiendas registradas actualmente.";
@@ -56,13 +49,13 @@ public class ListaTiendas {
             return mdl;
         }
         Tienda aux;
-        Trabajador worker;
+        Gerente worker;
         ListIterator<Tienda> itr=listaTiendas.listIterator();        
         while (itr.hasNext()) {
             aux = itr.next();
             worker = aux.getGerente();
             element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
-                    "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaTrabajadores()+"] - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
+                    "] - [Vendedores Registrados: "+aux.obtenerTamañoListaVendedores()+"] - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
             mdl.addElement(element);
         }
         return mdl;
@@ -87,9 +80,9 @@ public class ListaTiendas {
     	
     	return null; 
     }
-    public Trabajador buscarGerente(String Rut){
+    public Gerente buscarGerente(String Rut){
 
-        Trabajador ger;
+        Gerente ger;
         ListIterator<Tienda> itr=listaTiendas.listIterator();
         while(itr.hasNext()){
             ger = itr.next().getGerente();
@@ -109,6 +102,7 @@ public class ListaTiendas {
         while (itr.hasNext()) {
         	aux = itr.next();
         	if(aux.getID().equals(IDTienda)) {
+                    aux.getGerente().setTiendaACargo(null);
                     itr.remove();
                     return true;
                 }
@@ -123,13 +117,13 @@ public class ListaTiendas {
                 }
                 String element;
                 Tienda aux;
-                Trabajador worker;
+                Gerente worker;
                 ListIterator<Tienda> itr=listaTiendas.listIterator();
                 while (itr.hasNext()) {
                     aux = itr.next();
                     worker = aux.getGerente();
                     element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
-                            "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaTrabajadores()+"]"
+                            "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaVendedores()+"]"
                             + " - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
                     writer.write(element);
                 }

@@ -9,6 +9,7 @@ package proyecto;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ListIterator;
 import javax.swing.DefaultListModel;
 
 /**
@@ -20,9 +21,11 @@ public class Empresa {
     private String Nombre;
     private String CEO;
     private ListaTiendas listaTiendas;
+    private ListaGerentes listaGer;
     
     public Empresa(){
         listaTiendas = new ListaTiendas();
+        listaGer = new ListaGerentes();
     }
     public String getNombre(){
         return Nombre;
@@ -36,24 +39,22 @@ public class Empresa {
     public void setCEO(String CEO){
         this.CEO = CEO;
     }
-    public int agregarTienda(String ID,String nomGer,String dir,String sueldo,String rut){
-        
+    public int agregarTienda(String ID,String dir,Gerente ger){
+        //EL GERENTE GER LO ENTREGARÁ EL COMBOBOX 
         if(listaTiendas.buscarTienda(ID) != null){
             return -1;
         }
-          
-        if(listaTiendas.buscarGerente(rut) != null){
+        if(listaGer.buscarGerente(ger.getRut()) == null || listaTiendas.buscarGerente(ger.getRut()) != null){
             return -1;
         }
         
-        Trabajador TObj = new Trabajador();
-        TObj.setName(nomGer);
-        TObj.setRut(rut);
-        TObj.setCargo("Administrador Tienda [ID: "+ID+"]");
-        TObj.setSueldo(Integer.parseInt(sueldo));
+        /*Vendedor VObj = new Vendedor();
+        VObj.setName(nomGer);
+        VObj.setRut(rut);
+        VObj.setSueldo(Integer.parseInt(sueldo));*/
         
         
-        listaTiendas.agregarTienda(listaTiendas.crearTienda(TObj, dir, ID));
+        listaTiendas.agregarTienda(listaTiendas.crearTienda(ger, dir, ID));
         return 1;
         
     }
@@ -82,7 +83,39 @@ public class Empresa {
     public void cargarTiendas() throws IOException, FileNotFoundException, ClassNotFoundException{
         listaTiendas.cargarTiendas();
     }
-    
+    public int agregarGerente(String Nombre, String Rut, String Sueldo){
+        
+        if(listaGer.buscarGerente(Rut)!=null)return -1;
+        
+        Gerente aux = listaGer.crearGerente(Nombre, Rut, Sueldo);
+        
+        listaGer.agregarGerente(aux);
+        return 1;
+    }
+    public Gerente buscarGerente(String rut){
+        return listaGer.buscarGerente(rut);
+    }
+    public int eliminarGerente(String rut){
+        if(listaGer.buscarGerente(rut)==null)return -1;
+        
+        listaGer.eliminarGerente(rut);
+        return 1;
+    }
+    public String[] arrayGerentesParaComboBox(){
+        String array[];
+        ArrayList<String> gerLista = listaGer.listaParaCombobox();
+        
+        if(gerLista == null){
+            System.out.println("gerlista null");
+            array = new String[1];
+            array[0] = "00.000.000-0";
+            return array;
+        }
+        
+        //array = new String[gerLista.size()];
+        array = gerLista.toArray(new String[0]);
+        return array;
+    }
     /*public int getShops() {
     	return listaDeShop.size();
     }*/

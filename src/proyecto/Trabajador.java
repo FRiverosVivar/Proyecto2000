@@ -11,10 +11,9 @@ import java.io.Serializable;
  *
  * @author Zekro
  */
-public class Trabajador implements Serializable{
+public abstract class Trabajador implements Serializable{
        private String name;
        private String rut;
-       private String cargo;
        private int sueldo;
        
        public void setName(String name){
@@ -28,12 +27,6 @@ public class Trabajador implements Serializable{
        }
        public String getRut(){
             return this.rut;   
-       }
-       public void setCargo(String cargo){
-            this.cargo = cargo;
-       }
-       public String getCargo(){
-           return this.cargo;
        }
        public void setSueldo(int sueldo){
            this.sueldo = sueldo;

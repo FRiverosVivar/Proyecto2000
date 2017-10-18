@@ -14,22 +14,21 @@ public class Tienda implements Serializable{
     
     private String direc;
     private String id;
-    private Trabajador Gerente;
-    private ListaTrabajadores listaTrabajadores;
+    private Gerente GerenteTienda;
+    private ListaVendedores listaVendedores;
     private ListaArticulos listaArticulos;
-    private ListaFacturas listaFacturas;
     
     public Tienda(String id){
         this.id = id;
-        listaTrabajadores = new ListaTrabajadores();
+        listaVendedores = new ListaVendedores();
         listaArticulos = new ListaArticulos();
-        listaFacturas = new ListaFacturas();
+        
     }
-    public Trabajador getGerente(){
-        return Gerente;
+    public Gerente getGerente(){
+        return GerenteTienda;
     }
-    public void setGerente(Trabajador Gerente){
-        this.Gerente = Gerente;
+    public void setGerente(Gerente Grnt){
+        this.GerenteTienda = Grnt;
     }
     public void setDirec (String direc){
         this.direc = direc;
@@ -43,26 +42,26 @@ public class Tienda implements Serializable{
     public String getDirecc() {
     	return direc;
     }
-    public int obtenerTamañoListaTrabajadores(){
-        return listaTrabajadores.obtenerTamañoListaTrabajadores();
+    public int obtenerTamañoListaVendedores(){
+        return listaVendedores.obtenerTamañoListaVendedores();
     }
     public int obtenerTamañoListaArticulos(){
-        return listaTrabajadores.obtenerTamañoListaTrabajadores();
+        return listaVendedores.obtenerTamañoListaVendedores();
     }
-    public int añadirTrabajadorTienda(String Nombre, String Rut, String Cargo, String Sueldo){
-        if(listaTrabajadores.buscarTrabajador(Rut) != null)return -1;
+    public int añadirVendedorTienda(String Nombre, String Rut, String Sueldo){
+        if(listaVendedores.buscarVendedor(Rut) != null)return -1;
         
-        Trabajador aux = listaTrabajadores.crearTrabajador(Nombre, Rut, Cargo, Sueldo);
-        listaTrabajadores.agregarTrabajador(aux);
+        Vendedor aux = listaVendedores.crearVendedor(Nombre, Rut,Sueldo);
+        listaVendedores.agregarVendedor(aux);
         
         return 1;
         
     }
-    public int añadirTrabajadorTienda(String Nombre, String Rut, String Cargo){
-        if(listaTrabajadores.buscarTrabajador(Rut) != null)return -1;
+    public int añadirVendedorTienda(String Nombre, String Rut){
+        if(listaVendedores.buscarVendedor(Rut) != null)return -1;
         
-        Trabajador aux = listaTrabajadores.crearTrabajador(Nombre, Rut, Cargo, "0");
-        listaTrabajadores.agregarTrabajador(aux);
+        Vendedor aux = listaVendedores.crearVendedor(Nombre, Rut, "0");
+        listaVendedores.agregarVendedor(aux);
         
         return 1;
         
@@ -75,7 +74,7 @@ public class Tienda implements Serializable{
         
         return 1;
     }
-    public int añadirFactura(String Rut, String Codigo, String IDFact){
+    /*public int añadirFactura(String Rut, String Codigo, String IDFact){
         Articulo AObj = listaArticulos.buscarArticulo(Codigo);
         Trabajador TObj = listaTrabajadores.buscarTrabajador(Rut);
         if(AObj == null | TObj == null )return -1; // en caso de no existir el trabajador o el articulo, se retorna -1
@@ -85,7 +84,7 @@ public class Tienda implements Serializable{
         listaFacturas.agregarFactura(TObj, IDFact, AObj);
         
         return 1;
-    }
+    }*/
     /*public int getInventory() {
     	return listaArticulos.size();
     }
