@@ -1,0 +1,43 @@
+public void mostrarTiendasEnArchivo() throws IOException{
+        try (FileWriter writer = new FileWriter("TiendasRegistradas.txt")) {
+                if(listaTiendas.size()<1){
+                    writer.write("No hay tiendas registradas actualemente");
+                    writer.close();
+                }
+                String element;
+                Tienda aux;
+                Gerente worker;
+                ListIterator<Tienda> itr=listaTiendas.listIterator();
+                while (itr.hasNext()) {
+                    aux = itr.next();
+                    worker = aux.getGerente();
+                    element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
+                            "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaVendedores()+"]"
+                            + " - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
+                    writer.write(element);
+                }
+            writer.close();
+        } catch (IOException ex){}
+    }
+
+
+
+
+public void exportarFacturas() throws IOException{
+        try (FileWriter writer = new FileWriter("FacturasRegistradas.txt")) {
+                if(listaDeFacturas.size()<1){
+                    writer.write("No hay Facturas registradas actualemente");
+                    writer.close();
+                }
+                String element;
+                Factura aux;
+                ListIterator<Factura> itr=listaDeFacturas.listIterator();
+                while (itr.hasNext()) {
+                    aux = itr.next();
+                    element = ("[ID: "+aux.getID()+"] - [Ganancia: "+aux.getGanancia()+"]"
+                            + " - [Articulos vendidos: "+aux.getSize()+"]");
+                    writer.write(element);
+                }
+            writer.close();
+        } catch (IOException ex){}
+    }
