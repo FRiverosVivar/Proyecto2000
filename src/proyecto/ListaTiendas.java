@@ -167,31 +167,8 @@ public class ListaTiendas {
             
 	}
     }
-    public int gananciaTotalTiendas(){
+
            
-        int total=0; 
-     	Tienda auxshop;
-    	ListIterator<Tienda> itr=listaTiendas.listIterator();
-        while (itr.hasNext()) {
-        	auxshop = itr.next();
-                total=total+auxshop.calcularGananciaTienda();
-        }
-    	
-    	return total;     
-  
-     }
-     
-    public void calcularPorcentajesDeGanancia(int total){
-      
-        Tienda auxshop;
-    	ListIterator<Tienda> itr=listaTiendas.listIterator();
-        while (itr.hasNext()) {
-        	auxshop = itr.next();
-                auxshop.setPorcentajeGanancia((auxshop.calcularGananciaTienda()*100)/total);
-        }
-        
-        
-    } 
     public ArrayList listaParaCombobox(){
         ArrayList<String> array = new ArrayList<String>();
         ListIterator<Tienda> itr=listaTiendas.listIterator();
@@ -203,24 +180,79 @@ public class ListaTiendas {
         
         return array;
     }
+    
+    
     public DefaultListModel modelVendedores(String ID){
         Tienda aux = buscarTienda(ID);
         DefaultListModel<String> mdl = aux.modelVentana();        
         return mdl;
     }
+    
+    
     public int agregarVendedor(String nombre, String rut, String sueldo, String IDTienda){
         Tienda aux = buscarTienda(IDTienda);
                
         return aux.añadirVendedor(nombre, rut, sueldo);
     }
+    
+    
     public int eliminarVendedor(String rut,String IDTienda){
         Tienda aux = buscarTienda(IDTienda);
         
         return aux.eliminarVendedor(rut);
     }
+    
+    
     public int modificarVendedor(String nombre, String rut, String sueldo,String rutnuevo, String IDTienda){
         Tienda aux = buscarTienda(IDTienda);
                
         return aux.modificarVendedor(nombre, rut, sueldo,rutnuevo);
     }
+    
+    public Tienda obtenerTiendaMayorGanancia(){
+     ListIterator<Tienda> itr=listaTiendas.listIterator();
+     Tienda mayor=null;
+     Tienda aux;
+     while (itr.hasNext()) {
+         if(mayor==null){
+             mayor=itr.next();
+         }else{
+             aux=itr.next();
+             if(aux.calcularGananciaTienda()>mayor.calcularGananciaTienda()){
+              mayor=aux;
+             }
+         
+        }
+     }
+     return mayor;
+  }
+    
+    public void calcularPorcentajesDeGanancia(int total){
+      
+        Tienda auxshop;
+    	ListIterator<Tienda> itr=listaTiendas.listIterator();
+        while (itr.hasNext()) {
+        	auxshop = itr.next();
+                auxshop.setPorcentajeGanancia((auxshop.calcularGananciaTienda()*100)/total);
+            }
+    } 
+    
+    
+    public int gananciaTotalTiendas(){
+           
+        int total=0; 
+     	Tienda auxshop;
+    	ListIterator<Tienda> itr=listaTiendas.listIterator();
+        while (itr.hasNext()) {
+        	auxshop = itr.next();
+                total=total+auxshop.calcularGananciaTienda();
+        }
+    	return total;     
+    }
+    
+    public ArrayList ObtenerListaOrdenadaPorGanancias(){
+        int total=listaTiendas.
+    }
 }
+
+

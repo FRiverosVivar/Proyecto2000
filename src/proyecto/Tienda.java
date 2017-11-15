@@ -17,42 +17,51 @@ public class Tienda implements Serializable{
     private String id;
     private int porcentajeGanancia; /*no se le asigna valor inicial, se modifica*/
     private Gerente GerenteTienda;
-    private ListaVendedores listaVendedores;
-    private ListaArticulos listaArticulos;
+    private  ListaVendedores listaVendedores;
+    private  ListaArticulos listaArticulos;
     
     public Tienda(String id){
         this.id = id;
         listaVendedores = new ListaVendedores();
         listaArticulos = new ListaArticulos();
-        
     }
+    
     public void setPorcentajeGanancia(int porcentajeGanancia){
         this.porcentajeGanancia=porcentajeGanancia;
     }
+    
     public Gerente getGerente(){
         return GerenteTienda;
     }
+    
     public void setGerente(Gerente Grnt){
         this.GerenteTienda = Grnt;
     }
+    
     public void setDirec (String direc){
         this.direc = direc;
     }
+    
     public void setID(String id){
         this.id=id;
     }
+    
     public String getID(){
         return id;
     }
+    
     public String getDirecc() {
     	return direc;
     }
+    
     public int obtenerTamañoListaVendedores(){
         return listaVendedores.obtenerTamañoListaVendedores();
     }
+    
     public int obtenerTamañoListaArticulos(){
         return listaVendedores.obtenerTamañoListaVendedores();
     }
+    
     public int añadirVendedorTienda(String Nombre, String Rut, String Sueldo){
         if(listaVendedores.buscarVendedor(Rut) != null)return -1;
         
@@ -80,23 +89,12 @@ public class Tienda implements Serializable{
         return 1;
     }
     
-    public int calcularGananciaTienda(){
-       // listaVendedores es la clase que encapsula a los vendedores.
-       return listaVendedores.obtenerVentas();
-        /*Vendedor aux;
-        int GananciaTotal=0;
-        ListIterator<Vendedor> itr=listaVendedores.listIterator();
-        while (itr.hasNext()) {
-            aux=itr.next();  
-            GananciaTotal=GananciaTotal+aux.getGananciaDeVendedor();
-        }
-        
-        return GananciaTotal;*/
     
-    }
     public DefaultListModel modelVentana(){
         return listaVendedores.MdlVentana();
     }
+    
+        
     public int añadirVendedor(String nombre,String rut,String sueldo){
         if(listaVendedores.buscarVendedor(rut)!=null)return -1;
         Vendedor aux = listaVendedores.crearVendedor(nombre, rut, sueldo);
@@ -104,12 +102,16 @@ public class Tienda implements Serializable{
         
         return 1;
     }
+    
+        
     public int eliminarVendedor(String rut){
         if(listaVendedores.buscarVendedor(rut)==null)return -1;
         
         listaVendedores.eliminarVendedor(rut);
         return 1;
     }
+    
+       
     public int modificarVendedor(String nombre,String rut,String sueldo,String rutnuevo){
         if(listaVendedores.buscarVendedor(rut)==null)return -1;
         
@@ -119,6 +121,15 @@ public class Tienda implements Serializable{
         aux.setSueldo(Integer.parseInt(sueldo));
         return 1;
     }
+    
+       
+    public int calcularGananciaTienda(){
+       // listaVendedores es la clase que encapsula a los vendedores.
+       return listaVendedores.obtenerVentas();    
+    }
+    
+    
+    
     /*public int añadirFactura(String Rut, String Codigo, String IDFact){
         Articulo AObj = listaArticulos.buscarArticulo(Codigo);
         Trabajador TObj = listaTrabajadores.buscarTrabajador(Rut);
@@ -764,5 +775,8 @@ public class Tienda implements Serializable{
         
         return null;
     }*/
+
+
+
 }
 

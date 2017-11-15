@@ -162,33 +162,7 @@ public class Empresa {
     public int modificarVendedor(String nombre, String rut, String sueldo,String rutnuevo,String IDTienda){
         return listaTiendas.modificarVendedor(nombre, rut, sueldo,rutnuevo,IDTienda);
     }
-    /*calcularGananciaDeUnatienda(){
-        
-    }
-    mostrarPorcentajeDeGanancias(){
-        
-    }*/
-    /*public Tienda obtenerTiendaMayorGanancia(){
-     ListIterator<Tienda> itr=listaTiendas.listIterator();
-     int total=0;
-     Tienda mayor=null;
-     Tienda aux=null;
-     while (itr.hasNext()) {
-         if(mayor==null){
-             mayor=itr.next();
-             total=aux.calcularGananciaTienda();
-         }else{
-             aux=itr.next();
-             if(aux.calcularGananciaTienda()>mayor.calcularGananciaTienda){
-              mayor=aux;
-              total=total+mayor.calcularGananciaTienda();
-             }
-         
-        }
-     }
-     mayor.setPorcentajeGanancia((100*(mayor.calcularGananciaTienda()))/total);
-     return mayor;
-  } */
+
     /*public int getShops() {
     	return listaDeShop.size();
     }*/
