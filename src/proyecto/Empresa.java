@@ -8,6 +8,7 @@ package proyecto;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import javax.swing.DefaultListModel;
@@ -16,7 +17,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Zekro
  */
-public class Empresa {
+public class Empresa implements Serializable{
     
     private String Nombre;
     private String CEO;
@@ -162,7 +163,28 @@ public class Empresa {
     public int modificarVendedor(String nombre, String rut, String sueldo,String rutnuevo,String IDTienda){
         return listaTiendas.modificarVendedor(nombre, rut, sueldo,rutnuevo,IDTienda);
     }
-
+/*
+    public Tienda obtenerTiendaMayorGanancia(){
+     ListIterator<Tienda> itr=listaTiendas.listIterator();
+     int total=0;
+     Tienda mayor=null;
+     Tienda aux=null;
+     while (itr.hasNext()) {
+         if(mayor==null){
+             mayor=itr.next();
+             total=aux.calcularGananciaTienda();
+         }else{
+             aux=itr.next();
+             if(aux.calcularGananciaTienda()>mayor.calcularGananciaTienda){
+              mayor=aux;
+              total=total+mayor.calcularGananciaTienda();
+             }
+         
+        }
+     }
+     mayor.setPorcentajeGanancia((100*(mayor.calcularGananciaTienda()))/total);
+     return mayor;
+  } 
     /*public int getShops() {
     	return listaDeShop.size();
     }*/

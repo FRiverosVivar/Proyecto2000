@@ -8,12 +8,19 @@ package proyecto.Ventanas;
 import proyecto.Ventanas.ventanaMostrarTiendas;
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto.Empresa;
+import proyecto.Tienda;
 
 /**
  *
@@ -26,7 +33,7 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
      * @throws java.lang.InterruptedException
      * @throws java.io.IOException
      */
-    Empresa best;
+    private Empresa best;
     public ventanaMenuPrincipal(Empresa bestEmpresa) {
         initComponents();
         mn_overlay.setBackground(new Color(0,0,0,100));
@@ -53,6 +60,8 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Easy Shop");
         setMinimumSize(new java.awt.Dimension(880, 610));
+        setPreferredSize(new java.awt.Dimension(880, 610));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mn_overlay.setBackground(new java.awt.Color(0, 0, 0));
@@ -73,7 +82,7 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
                 mn_jB_cerrarsesionActionPerformed(evt);
             }
         });
-        mn_overlay.add(mn_jB_cerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 100, -1));
+        mn_overlay.add(mn_jB_cerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 110, -1));
 
         mn_jB_eliminarTienda.setText("Eliminar Tienda");
         mn_jB_eliminarTienda.addActionListener(new java.awt.event.ActionListener() {
@@ -113,15 +122,25 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         mn_bg.setMaximumSize(new java.awt.Dimension(880, 610));
         mn_bg.setMinimumSize(new java.awt.Dimension(880, 610));
         mn_bg.setPreferredSize(new java.awt.Dimension(880, 610));
-        getContentPane().add(mn_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(mn_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void mn_jB_cerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_jB_cerrarsesionActionPerformed
+        
+        FileOutputStream fos;
         try {
-            best.guardarTiendas();
-        } catch (IOException ex) {
+            fos = new FileOutputStream(new File("Tiendas.txt"));
+            try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                    oos.writeObject(best);
+                oos.close();
+                
+                fos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ventanaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.exit(0);

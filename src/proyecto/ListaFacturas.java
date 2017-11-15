@@ -5,9 +5,12 @@
  */
 package proyecto;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -55,6 +58,12 @@ public class ListaFacturas implements Serializable{
         
         return 1;
     }
+    
+    /**
+     * 
+     * @param ID
+     * @return 
+     */
     public Factura buscarFactura(String ID){
         ListIterator<Factura> itr=listaDeFacturas.listIterator();
         while (itr.hasNext()) {
@@ -84,5 +93,40 @@ public class ListaFacturas implements Serializable{
             GananciaTotal=GananciaTotal+aux.getGanancia();
         }
         return GananciaTotal;
+    }
+    public DefaultListModel mdlFacturas(){
+        DefaultListModel<String> mdl = new DefaultListModel<>();
+        String element = "No hay facturas registradas actualmente.";
+        if(listaDeFacturas.size()<1){
+            mdl.addElement(element);
+            return mdl;
+        }
+        Factura aux;
+        ListIterator<Factura> itr=listaDeFacturas.listIterator();        
+        while (itr.hasNext()) {
+            aux = itr.next();
+            element = ("[IDFactura: "+aux.getID()+"] - [Ganancia: "+aux.getGanancia()+
+                    "] - [Cantidad de Articulos Vendidos: "+aux.getSize()+"]");
+            mdl.addElement(element);
+        }
+        return mdl;
+    }
+    public void exportarFacturas() throws IOException{
+        try (FileWriter writer = new FileWriter("FacturasRegistradas.txt")) {
+                if(listaDeFacturas.size()<1){
+                    writer.write("No hay Facturas registradas actualemente");
+                    writer.close();
+                }
+                String element;
+                Factura aux;
+                ListIterator<Factura> itr=listaDeFacturas.listIterator();
+                while (itr.hasNext()) {
+                    aux = itr.next();
+                    element = ("[ID: "+aux.getID()+"] - [Ganancia: "+aux.getGanancia()+"]"
+                            + " - [Articulos vendidos: "+aux.getSize()+"]");
+                    writer.write(element);
+                }
+            writer.close();
+        } catch (IOException ex){}
     }
 }

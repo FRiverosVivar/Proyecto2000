@@ -14,7 +14,8 @@ import java.io.Serializable;
 public abstract class Trabajador implements Serializable{
        private String name;
        private String rut;
-       private int sueldo;
+       protected int sueldo;
+       protected boolean pago;
        
        public void setName(String name){
             this.name = name;

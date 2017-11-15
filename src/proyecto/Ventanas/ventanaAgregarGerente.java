@@ -46,6 +46,7 @@ public class ventanaAgregarGerente extends javax.swing.JFrame {
         mnAddGer_mnPrincipal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mnAddGer_overlay.setBackground(new java.awt.Color(0, 0, 0));

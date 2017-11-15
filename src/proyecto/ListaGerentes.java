@@ -5,6 +5,7 @@
  */
 package proyecto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import javax.swing.DefaultListModel;
@@ -13,7 +14,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Zekro
  */
-public class ListaGerentes {
+public class ListaGerentes implements Serializable{
     private ArrayList<Gerente> listaGerentes;
     
     public ListaGerentes(){

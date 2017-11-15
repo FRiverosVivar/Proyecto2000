@@ -13,6 +13,7 @@ public class Articulo implements Serializable {
     private int precioVenta;
     private int precioCosto;
     private int dscto;
+    private int vecesVendido;
     
     public void setNombre(String nombre){
         this.nombre = nombre;
@@ -61,5 +62,10 @@ public class Articulo implements Serializable {
         int preciofinal = (int) monto;
         return preciofinal;   
     }
-    
+    public int getVecesVendido(){
+        return vecesVendido;
+    }
+    public void setVecesVendido(int vecesVendido){
+        this.vecesVendido=vecesVendido;
+    }
 }

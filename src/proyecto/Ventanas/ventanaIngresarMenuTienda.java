@@ -22,7 +22,7 @@ public class ventanaIngresarMenuTienda extends javax.swing.JFrame {
      * Creates new form ventanaIngresarMenuTienda
      */
     private javax.swing.JComboBox<String> mnIMT_ComboBox1;
-    Empresa best;
+    private Empresa best;
     public ventanaIngresarMenuTienda(Empresa bestEmpresa) {
         initComponents();
         imn_overlay.setBackground(new Color(0,0,0,100));

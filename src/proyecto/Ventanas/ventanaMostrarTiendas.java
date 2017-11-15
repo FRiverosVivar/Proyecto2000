@@ -27,7 +27,7 @@ public class ventanaMostrarTiendas extends javax.swing.JFrame {
     /**
      * Creates new form ventanaMostrarTiendas
      */
-    Empresa best;
+    private Empresa best;
     public ventanaMostrarTiendas(Empresa bestEmpresa) {
         initComponents();
         best = bestEmpresa;

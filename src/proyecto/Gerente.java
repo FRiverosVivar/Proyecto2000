@@ -5,11 +5,13 @@
  */
 package proyecto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Zekro
  */
-public class Gerente extends Trabajador{
+public class Gerente extends Trabajador implements Serializable{
     private String IDTienda;
     public Gerente(){
         IDTienda = null;

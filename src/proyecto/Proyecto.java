@@ -5,11 +5,19 @@
  */
 package proyecto;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import proyecto.Ventanas.ventanaLogin;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import proyecto.Ventanas.ventanaMenuPrincipal;
 
 /**
  *
@@ -23,20 +31,35 @@ public class Proyecto {
      * @throws IOException 
      * @throws NumberFormatException 
      * @throws InterruptedException 
+     * @throws java.lang.ClassNotFoundException 
      */
-    public static void main(String[] args) throws NumberFormatException, IOException, InterruptedException {
+    public static void main(String[] args) throws NumberFormatException, IOException, InterruptedException, ClassNotFoundException {
         Empresa bestEmpresa = new Empresa();
-        /*try {
+        /*Empresa bestEmpresa1;
+        try {
             bestEmpresa.cargarTiendas();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Proyecto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Proyecto.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
+            FileInputStream fi = new FileInputStream(new File("Empresa.txt"));
+        
+            try(ObjectInputStream oi = new ObjectInputStream(fi)){
+               bestEmpresa1 = (Empresa) oi.readObject();
+               if(bestEmpresa1 != null)bestEmpresa = bestEmpresa1;
+            }catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null,"Archivo con datos a cargar no encontrado.");
+            } catch (IOException ex) {
+                Logger.getLogger(ventanaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+        
         bestEmpresa.setCEO("Steve Jobs");
         bestEmpresa.setNombre("EasyShop v1.5a");
     	ventanaLogin ventana = new ventanaLogin(bestEmpresa);
         ventana.setVisible(true);
+        }
+}
         /*int option;
         do {
         	
@@ -90,10 +113,10 @@ public class Proyecto {
         
         }while(option != 0);*/
                 
-    }
+    
     /*public static int getOption() throws NumberFormatException, IOException {
     	
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	return Integer.parseInt(br.readLine());
     }*/
-}
+

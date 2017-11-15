@@ -21,8 +21,8 @@ public class ventanaMenuTienda_CambiarGerente extends javax.swing.JFrame {
      * Creates new form ventanaMenuTienda_CambiarGerente
      */
     private javax.swing.JComboBox<String> mnT_CG_ComboBox1;
-    Empresa best;
-    Tienda tienda;
+    private Empresa best;
+    private Tienda tienda;
     public ventanaMenuTienda_CambiarGerente(Empresa bestEmpresa,Tienda tienda1) {
         initComponents();
         best = bestEmpresa;

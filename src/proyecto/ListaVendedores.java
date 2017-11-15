@@ -59,7 +59,17 @@ public class ListaVendedores implements Serializable {
             }
         }
     }
-
+    public int obtenerVentas(){
+        Vendedor aux;
+        int GananciaTotal=0;
+        ListIterator<Vendedor> itr=listaVendedores.listIterator();
+        while (itr.hasNext()) {
+            aux=itr.next();  
+            GananciaTotal=GananciaTotal+aux.getGananciaDeVendedor();
+        }
+        
+        return GananciaTotal;
+    }
     public DefaultListModel MdlVentana(){
         DefaultListModel<String> mdl = new DefaultListModel<>();
         String element = "No hay Vendedorxs registradxs actualmente.";
@@ -87,17 +97,5 @@ public class ListaVendedores implements Serializable {
                 itr.remove();
             }
         }
-    }
-    
-        public int obtenerVentas(){
-        Vendedor aux;
-        int GananciaTotal=0;
-        ListIterator<Vendedor> itr=listaVendedores.listIterator();
-        while (itr.hasNext()) {
-            aux=itr.next();  
-            GananciaTotal=GananciaTotal+aux.getGananciaDeVendedor();
-        }
-        
-        return GananciaTotal;
     }
 }

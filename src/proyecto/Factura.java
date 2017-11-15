@@ -18,7 +18,7 @@ public class Factura implements Serializable {
     
     private String ID;
     private int Ganancia;
-    ArrayList<Articulo> listaVendidos = new ArrayList<>();
+    private ArrayList<Articulo> listaVendidos = new ArrayList<>();
     
     
     public Factura(String ID, int Ganancia){
@@ -50,6 +50,10 @@ public class Factura implements Serializable {
          }
          listaVendidos.add(o);
          Ganancia+=(o.getPrecioConDscto() - o.getPrecioCosto());
+         o.setVecesVendido((o.getVecesVendido())+1);
          return 1;
      }
+     /*public void sumaDeArrayLists(ArrayList items){
+         
+     }*/
 }
