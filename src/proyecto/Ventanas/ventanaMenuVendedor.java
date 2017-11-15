@@ -5,6 +5,14 @@
  */
 package proyecto.Ventanas;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import proyecto.Empresa;
+import proyecto.Tienda;
+import proyecto.Vendedor;
+
 /**
  *
  * @author Estudiante_2
@@ -14,8 +22,14 @@ public class ventanaMenuVendedor extends javax.swing.JFrame {
     /**
      * Creates new form ventanaMenuArticulos
      */
-    public ventanaMenuVendedor() {
+    private Empresa best;
+    private Tienda tienda;
+    private Vendedor vend;
+    public ventanaMenuVendedor(Empresa bestEmpresa,Tienda tienda1,Vendedor vn1) {
         initComponents();
+        best=bestEmpresa;
+        tienda=tienda1;
+        vend = vn1;
     }
 
     /**
@@ -87,17 +101,24 @@ public class ventanaMenuVendedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnVendedor_mnTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_mnTiendaActionPerformed
-        //ventanaMenuPrincipal mn = new ventanaMenuPrincipal(best);
-        //mn.setVisible(true);
-        //this.dispose();
+        ventanaMenuTienda mn = new ventanaMenuTienda(best,tienda);
+        mn.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mnVendedor_mnTiendaActionPerformed
 
     private void mnVendedor_AñadirVerFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_AñadirVerFacturasActionPerformed
-
+          ventanaMenuVendedor_AñadirVerFacturas mn = new ventanaMenuVendedor_AñadirVerFacturas(best,tienda,vend);
+          mn.setVisible(true);
+          this.dispose();
     }//GEN-LAST:event_mnVendedor_AñadirVerFacturasActionPerformed
 
     private void mnVendedor_ExportarFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_ExportarFacturasActionPerformed
-        // TODO add your handling code here:
+        try {
+            vend.exportarFacturas();
+            JOptionPane.showMessageDialog(null,"Archivo creado exitosamente (guardado en carpeta del proyecto).");
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaMenuVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mnVendedor_ExportarFacturasActionPerformed
 
     /**

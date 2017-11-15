@@ -6,8 +6,10 @@
 package proyecto.Ventanas;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import proyecto.Empresa;
 import proyecto.Tienda;
+import proyecto.Vendedor;
 
 /**
  *
@@ -119,15 +121,17 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
     }//GEN-LAST:event_mnTienda_mnPrincipalActionPerformed
 
     private void mnTienda_AddDelEditVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_AddDelEditVendedorActionPerformed
-           ventanaMenuArticulos_AñadirEliminarModificarArticulos mn 
-           = new ventanaMenuArticulos_AñadirEliminarModificarArticulos(best,tienda);
+           ventanaMenuTienda_AñadirEliminarModificarVendedores mn 
+           = new ventanaMenuTienda_AñadirEliminarModificarVendedores(best,tienda);
            mn.setVisible(true);
            this.dispose();
         
     }//GEN-LAST:event_mnTienda_AddDelEditVendedorActionPerformed
 
     private void mnTienda_menuArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_menuArticulosActionPerformed
-        // TODO add your handling code here:
+        ventanaMenuArticulos mn = new ventanaMenuArticulos(best,tienda);
+        mn.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mnTienda_menuArticulosActionPerformed
 
     private void mnTienda_setearCambiarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_setearCambiarGerenteActionPerformed
@@ -137,7 +141,16 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
     }//GEN-LAST:event_mnTienda_setearCambiarGerenteActionPerformed
 
     private void mnTienda_menuVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_menuVendedorActionPerformed
-        // TODO add your handling code here:
+        String rut = JOptionPane.showInputDialog("Ingrese el rut del vendedor: ");
+        Vendedor aux = tienda.buscarVendedor(rut);
+        if(aux == null){
+            JOptionPane.showMessageDialog(null,"No existe vendedor con tal rut.");
+            return;
+        }
+        
+        ventanaMenuVendedor mn = new ventanaMenuVendedor(best,tienda,aux);
+        mn.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mnTienda_menuVendedorActionPerformed
 
     /**

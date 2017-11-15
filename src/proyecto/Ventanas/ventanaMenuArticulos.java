@@ -6,7 +6,12 @@
 package proyecto.Ventanas;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import proyecto.Empresa;
+import proyecto.Tienda;
 
 /**
  *
@@ -17,10 +22,12 @@ public class ventanaMenuArticulos extends javax.swing.JFrame {
     /**
      * Creates new form ventanaMenuArticulos
      */
-    Empresa best;
-    public ventanaMenuArticulos(Empresa bestEmpresa) {
+    private Empresa best;
+    private Tienda tienda;
+    public ventanaMenuArticulos(Empresa bestEmpresa,Tienda tienda1) {
         initComponents();
         best = bestEmpresa;
+        tienda = tienda1;
         mnArticulos_overlay.setBackground(new Color(0,0,0,100));
     }
 
@@ -92,15 +99,24 @@ public class ventanaMenuArticulos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnArticulos_AñadirArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArticulos_AñadirArticuloActionPerformed
-
+        ventanaMenuArticulos_AñadirEliminarModificarArticulos mn = new ventanaMenuArticulos_AñadirEliminarModificarArticulos(best,tienda);
+        mn.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mnArticulos_AñadirArticuloActionPerformed
 
     private void mnArticulos_mnTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArticulos_mnTiendaActionPerformed
-        // TODO add your handling code here:
+        ventanaMenuTienda mn = new ventanaMenuTienda(best,tienda);
+        mn.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mnArticulos_mnTiendaActionPerformed
 
     private void mnArticulos_EliminarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArticulos_EliminarArticuloActionPerformed
-        // TODO add your handling code here:
+        try {
+            tienda.exportarArticulos();
+            JOptionPane.showMessageDialog(null,"Articulos Exportados Exitosamente.");
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaMenuArticulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mnArticulos_EliminarArticuloActionPerformed
 
     /**
