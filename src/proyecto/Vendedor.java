@@ -15,9 +15,9 @@ import javax.swing.DefaultListModel;
  * @author Zekro
  */
 public class Vendedor extends Trabajador implements Serializable,IPagable{    
-    private ListaFacturas listaFacturas;
+    private MapaFacturas listaFacturas;
     public Vendedor(){
-        listaFacturas = new ListaFacturas();
+        listaFacturas = new MapaFacturas();
     }
     public int añadirFactura(String Rut, String IDFact,Articulo AObj){
         /*Articulo AObj = listaArticulos.buscarArticulo(Codigo);

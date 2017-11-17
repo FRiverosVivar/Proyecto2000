@@ -224,7 +224,25 @@ public class ListaTiendas implements Serializable{
                
         return aux.modificarVendedor(nombre, rut, sueldo,rutnuevo);
     }
-    public ArrayList articulosMasVendidos(){
+    public Tienda obtenerTiendaMayorGanancia(){
+        ListIterator<Tienda> itr=listaTiendas.listIterator();
+        Tienda mayor=null;
+        Tienda aux;
+        while (itr.hasNext()) {
+            if(mayor==null){
+                mayor=itr.next();
+            }else{
+                aux=itr.next();
+                
+            if(aux.calcularGananciaTienda()>mayor.calcularGananciaTienda()){
+                mayor=aux;
+            }
+         
+        }
+     }
+     return mayor;
+  }
+    /*public ArrayList articulosMasVendidos(){
       Tienda auxshop;
      ArrayList<Articulo> articulosMasVendidos;
      articulosMasVendidos=new ArrayList<>();
@@ -270,5 +288,5 @@ public class ListaTiendas implements Serializable{
      
      
      return articulosMasVendidos;
-     }
+     }*/
 }
