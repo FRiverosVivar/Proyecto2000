@@ -5,6 +5,7 @@
  */
 package proyecto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,7 +14,7 @@ import java.util.Comparator;
  *
  * @author Nicholas
  */
-public class OrdenarAsc implements IOrdenarArray {
+public class OrdenarAsc implements Serializable,IOrdenarArray {
 
     @Override
     public void OrdenarArrayL(ArrayList Lista) {

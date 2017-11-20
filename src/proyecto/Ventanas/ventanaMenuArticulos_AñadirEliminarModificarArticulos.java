@@ -203,7 +203,11 @@ public class ventanaMenuArticulos_AñadirEliminarModificarArticulos extends java
             JOptionPane.showMessageDialog(null,"No es posible modificar un articulo con algun campo vacio.");
             return;
         }
-        String codigoNuevo = JOptionPane.showInputDialog("Ingrese el nuevo rut: ");
+        String codigoNuevo;
+        do{
+            codigoNuevo = JOptionPane.showInputDialog("Ingrese el nuevo codigo: ");
+        }while(codigoNuevo.isEmpty() == true);
+        
         if(tienda.modificarArticulo(codigo, nombre, precioVenta, precioCosto, stock, dsct, codigoNuevo) == -1){
             JOptionPane.showMessageDialog(null,"Ya esta registrado este articulo.\nO no existe la tienda que deseas modificar.");
             return;

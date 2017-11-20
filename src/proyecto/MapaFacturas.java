@@ -30,15 +30,19 @@ public class MapaFacturas implements Serializable{
      * para posteriormente ser agregado a un hashmap.
      * @param IDFact
      * @param AObj 
+     * @return  
      */
-    public void agregarFactura(String IDFact, Articulo AObj){
+    public boolean agregarFactura(String IDFact,Articulo AObj){
         //TOBJ Y AOBJ DEBE SER VERIFICADO EN TIENDA
         //BUSCAR IDFACT PARA EVITAR ID'S IGUALES
         //BUSCARFACTURA(IDFACT);
+        
         Factura nuevo = new Factura(0);
         nuevo.addItem(AObj);
         mapadeFacturas.put(IDFact, nuevo);
+        System.out.println("factura creada sin int cantidad");
         
+        return true;
     }
     /**
      * Sobrecarga de metodo. Esta f(x) recibe como parametro 1 Articulo y la cantidad de veces que se compró
@@ -46,17 +50,21 @@ public class MapaFacturas implements Serializable{
      * @param IDFact
      * @param AObj1
      * @param Cantidad 
+     * @return  
      */
-    public void agregarFactura(String IDFact, Articulo AObj1, int Cantidad){
+    public boolean agregarFactura(String IDFact,Articulo AObj1, int Cantidad){
         //TOBJ Y AOBJ DEBE SER VERIFICADO EN TIENDA
         //BUSCAR IDFACT PARA EVITAR ID'S IGUALES
         //BUSCARFACTURA(IDFACT);
+        
         Factura nuevo = new Factura(0);
         for(int i = 0; i<Cantidad;i++){
-            nuevo.addItem(AObj1);
+            nuevo.addItem(AObj1,Cantidad);
         }
         mapadeFacturas.put(IDFact, nuevo);
+        System.out.println("factura creada con int cantidad");
         
+        return true;
     }
     /**
      * Verifica que la factura exista y añade el articulo recibido como parametro.
@@ -67,11 +75,30 @@ public class MapaFacturas implements Serializable{
     public int añadirArticuloFactura(Articulo AObj, String IDFact){
         //verificar existencia de AObj(ListaArticulos)en Tienda.java
         Factura aux = buscarFactura(IDFact);
-        
-        if(aux == null)
+        System.out.println("buscando fact");
+        if(aux == null){
+            System.out.println("null? wtf");
             return -1;
+        }
         
         if(aux.addItem(AObj) == -1){
+            System.out.println("no agregado");
+            return -1;
+        }
+        //aux.addItem(AObj);
+        return 1;
+    }
+    public int añadirArticuloFactura(Articulo AObj, String IDFact, int cantidad){
+        //verificar existencia de AObj(ListaArticulos)en Tienda.java
+        Factura aux = buscarFactura(IDFact);
+        System.out.println("buscando fact");
+        if(aux == null){
+            System.out.println("null? wtf");
+            return -1;
+        }
+        
+        if(aux.addItem(AObj,cantidad) == -1){
+            System.out.println("no agregado");
             return -1;
         }
         //aux.addItem(AObj);
@@ -82,18 +109,13 @@ public class MapaFacturas implements Serializable{
      * @param ID
      * @return 
      */
-    public int eliminarFactura(String ID){
-        if(mapadeFacturas.remove(ID) == null)
-            return -1;
-        
-        return 1;
-    }
     /**
      * Obtener factura, recibe una ID y retorna un Objeto Factura.
      * @param ID
      * @return 
      */
     public Factura buscarFactura(String ID){
+        System.out.println("retornado factura mapafacturas");
         return mapadeFacturas.get(ID);
     }
     /**

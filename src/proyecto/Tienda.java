@@ -146,6 +146,9 @@ public class Tienda implements Serializable, Comparable<Tienda>{
         return this.id.compareTo(o.id);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    public DefaultListModel modelAgregarFacturaArticulo(){
+        return listaArticulos.modelAgregarFacturaArticulo();
+    }
     
 }
 

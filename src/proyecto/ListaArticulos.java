@@ -100,6 +100,23 @@ public class ListaArticulos implements Serializable {
             }
         }
     }
+    public DefaultListModel MdlVentanaFactArt(){
+        DefaultListModel<String> mdl = new DefaultListModel<>();
+        String element = "No hay Articulos registrados actualmente.";
+        if(listaArticulos.size()<1){
+            mdl.addElement(element);
+            return mdl;
+        }
+        Articulo aux;
+        String szAux;
+        ListIterator<Articulo> itr=listaArticulos.listIterator();        
+        while (itr.hasNext()) {
+            aux = itr.next();
+            element = (""+aux.getCodigo());
+            mdl.addElement(element);
+        }
+        return mdl;
+    }
     public DefaultListModel MdlVentana(){
         DefaultListModel<String> mdl = new DefaultListModel<>();
         String element = "No hay Articulos registrados actualmente.";
@@ -115,6 +132,23 @@ public class ListaArticulos implements Serializable {
             element = ("[Nombre: "+aux.getNombre()+"] - [Codigo: "+aux.getCodigo()+
                     "] - [Precio Venta: "+aux.getPrecio()+"] - [Precio Costo: "+aux.getPrecioCosto()+""
                     + "] - [Stock: "+aux.getStock()+"] - [Descuento: "+aux.getDscto());
+            mdl.addElement(element);
+        }
+        return mdl;
+    }
+    public DefaultListModel modelAgregarFacturaArticulo(){
+        DefaultListModel<String> mdl = new DefaultListModel<>();
+        String element = "No hay Articulos registrados actualmente.";
+        if(listaArticulos.size()<1){
+            mdl.addElement(element);
+            return mdl;
+        }
+        Articulo aux;
+        String szAux;
+        ListIterator<Articulo> itr=listaArticulos.listIterator();        
+        while (itr.hasNext()) {
+            aux = itr.next();
+            element = (""+aux.getCodigo());
             mdl.addElement(element);
         }
         return mdl;

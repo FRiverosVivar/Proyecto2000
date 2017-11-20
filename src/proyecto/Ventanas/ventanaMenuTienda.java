@@ -44,6 +44,7 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
         mnTienda_menuArticulos = new javax.swing.JButton();
         mnTienda_setearCambiarGerente = new javax.swing.JButton();
         mnTienda_menuVendedor = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +90,14 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
             }
         });
         mnTienda_overlay.add(mnTienda_menuVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 120, -1));
+
+        jButton1.setText("Ver ganancia actual");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        mnTienda_overlay.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,7 +150,11 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
     }//GEN-LAST:event_mnTienda_setearCambiarGerenteActionPerformed
 
     private void mnTienda_menuVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTienda_menuVendedorActionPerformed
-        String rut = JOptionPane.showInputDialog("Ingrese el rut del vendedor: ");
+        String rut;
+        do{
+            rut = JOptionPane.showInputDialog("Ingrese el rut del vendedor: ");
+        }while(rut.isEmpty() == true);
+         
         Vendedor aux = tienda.buscarVendedor(rut);
         if(aux == null){
             JOptionPane.showMessageDialog(null,"No existe vendedor con tal rut.");
@@ -153,12 +166,17 @@ public class ventanaMenuTienda extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mnTienda_menuVendedorActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null,"Ganancia actual: $"+tienda.calcularGananciaTienda());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton mnTienda_AddDelEditVendedor;
     private javax.swing.JButton mnTienda_menuArticulos;
     private javax.swing.JButton mnTienda_menuVendedor;

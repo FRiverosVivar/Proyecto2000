@@ -140,13 +140,13 @@ public class ListaTiendas implements Serializable{
                     worker = aux.getGerente();
                     element = ("[ID: "+aux.getID()+"] - [Gerente: "+worker.getName()+
                             "] - [Trabajadores Registrados: "+aux.obtenerTamañoListaVendedores()+"]"
-                            + " - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]");
+                            + " - [Inventario de la Tienda: "+aux.obtenerTamañoListaArticulos()+"]\n");
                     writer.write(element);
                 }
             writer.close();
         } catch (IOException ex){}
     }
-    public void guardarTiendas() throws FileNotFoundException, IOException{ 
+    /*public void guardarTiendas() throws FileNotFoundException, IOException{ 
         Tienda aux;
         ListIterator<Tienda> itr=listaTiendas.listIterator();           
         FileOutputStream fos = new FileOutputStream(new File("Tiendas.txt"));
@@ -175,7 +175,7 @@ public class ListaTiendas implements Serializable{
         }catch (EOFException e) {
             
 	}
-    }
+    }*/
     public int gananciaTotalTiendas(){
            
         int total=0; 
@@ -202,7 +202,7 @@ public class ListaTiendas implements Serializable{
         
     } 
     public ArrayList listaParaCombobox(){
-        ArrayList<String> array = new ArrayList<String>();
+        ArrayList<String> array = new ArrayList<>();
         ListIterator<Tienda> itr=listaTiendas.listIterator();
         while (itr.hasNext()) {
             Tienda aux = itr.next();
@@ -249,7 +249,20 @@ public class ListaTiendas implements Serializable{
         }
      }
      return mayor;
-  }
+    }
+    public int calcularPorcentajesGananciaTotal(){
+        ListIterator<Tienda> itr=listaTiendas.listIterator();
+        int sum=0;
+        Tienda aux;
+        while (itr.hasNext()) {
+            aux = itr.next();
+            sum = aux.calcularGananciaTienda();
+        }
+        if(sum == 0)return 0;
+        
+        return (sum/listaTiendas.size());
+    }
+}
     /*public ArrayList articulosMasVendidos(){
       Tienda auxshop;
      ArrayList<Articulo> articulosMasVendidos;
@@ -297,4 +310,4 @@ public class ListaTiendas implements Serializable{
      
      return articulosMasVendidos;
      }*/
-}
+

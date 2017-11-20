@@ -4,7 +4,7 @@ package proyecto;
  *
  * @author nichh
  */
-public interface IPagable {
+public interface IPagable{
     
     public void recibirPago(boolean sueldo);
     /*public void setPassword();

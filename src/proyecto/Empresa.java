@@ -83,7 +83,7 @@ public class Empresa implements Serializable{
         DefaultListModel<String> mdl = listaTiendas.modelVendedores(ID);        
         return mdl;
     }
-    public void mostrarTiendasEnArchivo() throws IOException{
+    public void mostrarTiendasEnArchivoOrdenadoPorGananciasDescendentes() throws IOException{
         listaTiendas.setOrdenarArray(new OrdenDesc());
         listaTiendas.mostrarTiendasEnArchivo();           
     }
@@ -91,19 +91,39 @@ public class Empresa implements Serializable{
         listaTiendas.setOrdenarArray(new OrdenarAsc());
         listaTiendas.mostrarTiendasEnArchivo();           
     }
-    public void mostrarTiendasEnArchivoOrdenadoPorGananciasDescendentes() throws IOException{        
+    public void mostrarTiendasEnArchivo() throws IOException{        
         listaTiendas.mostrarTiendasEnArchivo();           
     }
-    public void guardarTiendas() throws IOException{
+    /*public void guardarTiendas() throws IOException{
         listaTiendas.guardarTiendas();
     }
     public void cargarTiendas() throws IOException, FileNotFoundException, ClassNotFoundException{
         listaTiendas.cargarTiendas();
-    }
-    public int agregarGerente(String Nombre, String Rut, String Sueldo){
+    }*/
+    public int agregarGerente(String Nombre, String Rut, String Sueldo) throws ExceptionSoloLetras, ExceptionRutValido{
         
         if(listaGer.buscarGerente(Rut)!=null)return -1;
         
+        //try{
+            if(!Nombre.matches("[a-zA-Z]+")){        
+                //JOptionPane.showMessageDialog(null,"Excepcion: EL NOMBRE SOLO PUEDE CONTENER LETRAS"); 
+                throw new ExceptionSoloLetras("EL NOMBRE SOLO PUEDE CONTENER LETRAS");
+            }
+       /* }catch (ExceptionSoloLetras e){
+            return -1;
+        }*/
+        //try{
+            if(!Rut.matches("^[0-9]*$")){         
+                //JOptionPane.showMessageDialog(null,"Excepcion: EL RUT SOLO PUEDE CONTENER NUMEROS");       
+                throw new ExceptionRutValido("EL RUT SOLO PUEDE CONTENER NUMEROS");
+            }
+            if(Rut.length() >9){
+                //JOptionPane.showMessageDialog(null,"Excepcion: EL RUT SOLO PUEDE CONTENER 9 DIGITOS");  
+                throw new ExceptionRutValido("EL RUT SOLO PUEDE CONTENER 9 DIGITOS");
+            }
+        /*}catch (ExceptionRutValido e){
+            return -1;
+        }*/
         Gerente aux = listaGer.crearGerente(Nombre, Rut, Sueldo);
         
         listaGer.agregarGerente(aux);
@@ -171,7 +191,9 @@ public class Empresa implements Serializable{
     public int modificarVendedor(String nombre, String rut, String sueldo,String rutnuevo,String IDTienda){
         return listaTiendas.modificarVendedor(nombre, rut, sueldo,rutnuevo,IDTienda);
     }
-
+    public int calcularPorcentajeGananciaTotal(){
+        return listaTiendas.calcularPorcentajesGananciaTotal();
+    }
 }
 /*
     public Tienda obtenerTiendaMayorGanancia(){

@@ -39,8 +39,17 @@ public class Factura implements Serializable {
         o.setVecesVendido((o.getVecesVendido())+1);
         return 1;
     }
-     /*public void sumaDeArrayLists(ArrayList items){
-         
-     }*/
+    public int addItem(Articulo o, int cantidad){
+        for(int i=0;i<cantidad;i++){
+            if(o.getStock()<1){
+                 return -1;
+            }
+            listaVendidos.add(o);
+            System.out.println("añadido correctamente");
+            Ganancia+=(o.getPrecioConDscto() - o.getPrecioCosto());
+            o.setVecesVendido((o.getVecesVendido())+1);
+        }
+        return 1;
+    }
 
 }

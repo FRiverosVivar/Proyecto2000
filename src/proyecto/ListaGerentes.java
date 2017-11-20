@@ -27,7 +27,14 @@ public class ListaGerentes implements Serializable{
     public void agregarGerente(Gerente obj){
         listaGerentes.add(obj);
     }
-    public Gerente crearGerente(String Nombre, String Rut, String Sueldo){
+    public Gerente crearGerente(String Nombre, String Rut, String Sueldo) throws ExceptionRutValido,ExceptionSoloLetras{
+        
+       /* if(!Rut.matches("^[0-9]*$"))         
+            throw new ExceptionRutValido("EL RUT SOLO PUEDE CONTENER NUMEROS");
+        
+        if(Rut.length() >9) 
+            throw new ExceptionRutValido("EL RUT SOLO PUEDE CONTENER 9 DIGITOS");*/
+            
     	Gerente nuevo = new Gerente();
     	nuevo.setName(Nombre);
     	nuevo.setRut(Rut);

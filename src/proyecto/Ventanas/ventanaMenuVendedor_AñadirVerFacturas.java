@@ -8,6 +8,7 @@ package proyecto.Ventanas;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import proyecto.Articulo;
 import proyecto.Empresa;
 import proyecto.Tienda;
@@ -32,7 +33,10 @@ public class ventanaMenuVendedor_AñadirVerFacturas extends javax.swing.JFrame {
         vend = vn1;
         mnVendedor_overlay.setBackground(new Color(0,0,0,100));
         DefaultListModel<String> mdl = vend.mdlFacturas();
+        DefaultListModel<String> mdl2 = tienda.modelAgregarFacturaArticulo();
         mnAddGer_jList2.setModel(mdl);
+        mnAddGer_jList3.setModel(mdl2);
+        mnAddGer_jList3.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
 
     /**
@@ -46,12 +50,20 @@ public class ventanaMenuVendedor_AñadirVerFacturas extends javax.swing.JFrame {
 
         mnVendedor_overlay = new javax.swing.JPanel();
         mnVendedor_mnTienda = new javax.swing.JButton();
-        mnVendedor_ExportarFacturas = new javax.swing.JButton();
+        mnVendedor_CrearFactura = new javax.swing.JButton();
         mnAddGer_jList = new javax.swing.JScrollPane();
         mnAddGer_jList2 = new javax.swing.JList<>();
-        mnAddGer_nombre = new javax.swing.JTextField();
-        pnl_msgID = new javax.swing.JPanel();
-        jlabel_nombre = new javax.swing.JLabel();
+        pnl_msgID3 = new javax.swing.JPanel();
+        jlabel_nombre3 = new javax.swing.JLabel();
+        jlabel_nombre4 = new javax.swing.JLabel();
+        jlabel_nombre5 = new javax.swing.JLabel();
+        pnl_msgID2 = new javax.swing.JPanel();
+        jlabel_nombre2 = new javax.swing.JLabel();
+        pnl_msgID1 = new javax.swing.JPanel();
+        jlabel_nombre1 = new javax.swing.JLabel();
+        mnAddGer_jList1 = new javax.swing.JScrollPane();
+        mnAddGer_jList3 = new javax.swing.JList<>();
+        mnAddGer_nombreGer = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,25 +79,49 @@ public class ventanaMenuVendedor_AñadirVerFacturas extends javax.swing.JFrame {
         });
         mnVendedor_overlay.add(mnVendedor_mnTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, -1, -1));
 
-        mnVendedor_ExportarFacturas.setText("Crear Factura");
-        mnVendedor_ExportarFacturas.addActionListener(new java.awt.event.ActionListener() {
+        mnVendedor_CrearFactura.setText("Crear Factura");
+        mnVendedor_CrearFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnVendedor_ExportarFacturasActionPerformed(evt);
+                mnVendedor_CrearFacturaActionPerformed(evt);
             }
         });
-        mnVendedor_overlay.add(mnVendedor_ExportarFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, -1, -1));
+        mnVendedor_overlay.add(mnVendedor_CrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         mnAddGer_jList.setViewportView(mnAddGer_jList2);
 
-        mnVendedor_overlay.add(mnAddGer_jList, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 520, 340));
-        mnVendedor_overlay.add(mnAddGer_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 220, -1));
+        mnVendedor_overlay.add(mnAddGer_jList, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 320, 340));
 
-        pnl_msgID.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnl_msgID3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlabel_nombre.setText("Ingresa la ID de la factura");
-        pnl_msgID.add(jlabel_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, 20));
+        jlabel_nombre3.setText("FACTURA A CREAR");
+        pnl_msgID3.add(jlabel_nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 100, 20));
 
-        mnVendedor_overlay.add(pnl_msgID, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, 40));
+        jlabel_nombre4.setText("INGRESA LA ID");
+        pnl_msgID3.add(jlabel_nombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 80, 20));
+
+        jlabel_nombre5.setText("DE LA NUEVA");
+        pnl_msgID3.add(jlabel_nombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 20));
+
+        mnVendedor_overlay.add(pnl_msgID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 70));
+
+        pnl_msgID2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlabel_nombre2.setText("     CODIGOS DE ARTICULOS REGISTRADOS");
+        pnl_msgID2.add(jlabel_nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 20));
+
+        mnVendedor_overlay.add(pnl_msgID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 350, 40));
+
+        pnl_msgID1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlabel_nombre1.setText("      FACTURAS REGISTRADAS");
+        pnl_msgID1.add(jlabel_nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 190, 20));
+
+        mnVendedor_overlay.add(pnl_msgID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 320, 40));
+
+        mnAddGer_jList1.setViewportView(mnAddGer_jList3);
+
+        mnVendedor_overlay.add(mnAddGer_jList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 350, 340));
+        mnVendedor_overlay.add(mnAddGer_nombreGer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 130, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,54 +153,69 @@ public class ventanaMenuVendedor_AñadirVerFacturas extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mnVendedor_mnTiendaActionPerformed
 
-    private void mnVendedor_ExportarFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_ExportarFacturasActionPerformed
-        String id = mnAddGer_nombre.getText();
-        if(vend.buscarSiExisteFactura(id)==-1){
-            JOptionPane.showMessageDialog(null,"Ya existe una factura ligada a tal ID.");
-            return;
-        }
-        String codigo = JOptionPane.showInputDialog("Ingrese la id del Articulo: ");
-        Articulo aux = tienda.buscarArticulo(codigo);
-        if(aux == null){
-            JOptionPane.showMessageDialog(null,"No existe ese articulo.");
-            return;
-        }
-            
-        vend.añadirFactura(vend.getRut(), id, aux);
-        int option;
-        if (JOptionPane.showConfirmDialog(null, "¿Estas seguro?", "Cuidado",
-            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)option = 1;
-        else option = 0;
-         
-        while(option != 0){
-            
-            String codigo2 = JOptionPane.showInputDialog("Ingrese la id del Articulo: ");
-            Articulo aux2 = tienda.buscarArticulo(codigo2);
-            if(aux2 == null){
-                JOptionPane.showMessageDialog(null,"No existe ese articulo.");
-                continue;
+    private void mnVendedor_CrearFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVendedor_CrearFacturaActionPerformed
+        int[] index = mnAddGer_jList3.getSelectedIndices();
+        String IDFact = mnAddGer_nombreGer.getText();
+        if(vend.buscarSiExisteFactura(IDFact) == 1){
+            for(int i = 0;i<index.length;i++){
+                String codigo = mnAddGer_jList3.getModel().getElementAt(i);
+                Articulo aux = tienda.buscarArticulo(codigo);
+                int cantidad = Integer.parseInt(JOptionPane.showInputDialog("\nItems Seleccionados\n["+(i+1)+"] de ["+index.length+"]"
+                        + "\nIngrese la cantidad que se vendió: "));
+                if(cantidad == 1){
+                    vend.añadirArticuloFactura(IDFact, aux);
+                }else if(cantidad >1){
+                    vend.añadirArticuloFactura(IDFact, aux, cantidad);
+                }
             }
-            vend.añadirArticuloFactura(id, aux2);
-            
-            
-            if (JOptionPane.showConfirmDialog(null, "¿Estas seguro?", "Cuidado",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)option = 1;
-            else option = 0;
+            return;
         }
-    }//GEN-LAST:event_mnVendedor_ExportarFacturasActionPerformed
+        
+        String codigo = mnAddGer_jList3.getModel().getElementAt(0);
+        Articulo aux = tienda.buscarArticulo(codigo);
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog("\nItems Seleccionados\n["+1+"] de ["+index.length+"]"
+                    + "\nIngrese la cantidad que se vendió: "));
+        
+        if(cantidad == 1){
+            vend.añadirFactura(IDFact,aux);
+        }else if(cantidad >1){
+            vend.añadirFactura(IDFact,aux,cantidad);
+        }
+        if(index.length == 1)return;
+        
+        for(int i = 1;i<index.length;i++){
+            codigo = mnAddGer_jList3.getModel().getElementAt(i);
+            aux = tienda.buscarArticulo(codigo);
+            cantidad = Integer.parseInt(JOptionPane.showInputDialog("\nItems Seleccionados\n["+(i+1)+"] de ["+index.length+"]"
+                    + "\nIngrese la cantidad que se vendió: "));
+            if(cantidad == 1){
+                vend.añadirArticuloFactura(IDFact, aux);
+            }else if(cantidad >1){
+                vend.añadirArticuloFactura(IDFact, aux, cantidad);
+            }
+        }
+    }//GEN-LAST:event_mnVendedor_CrearFacturaActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jlabel_nombre;
+    private javax.swing.JLabel jlabel_nombre1;
+    private javax.swing.JLabel jlabel_nombre2;
+    private javax.swing.JLabel jlabel_nombre3;
+    private javax.swing.JLabel jlabel_nombre4;
+    private javax.swing.JLabel jlabel_nombre5;
     private javax.swing.JScrollPane mnAddGer_jList;
+    private javax.swing.JScrollPane mnAddGer_jList1;
     private javax.swing.JList<String> mnAddGer_jList2;
-    private javax.swing.JTextField mnAddGer_nombre;
-    private javax.swing.JButton mnVendedor_ExportarFacturas;
+    private javax.swing.JList<String> mnAddGer_jList3;
+    private javax.swing.JTextField mnAddGer_nombreGer;
+    private javax.swing.JButton mnVendedor_CrearFactura;
     private javax.swing.JButton mnVendedor_mnTienda;
     private javax.swing.JPanel mnVendedor_overlay;
-    private javax.swing.JPanel pnl_msgID;
+    private javax.swing.JPanel pnl_msgID1;
+    private javax.swing.JPanel pnl_msgID2;
+    private javax.swing.JPanel pnl_msgID3;
     // End of variables declaration//GEN-END:variables
 }

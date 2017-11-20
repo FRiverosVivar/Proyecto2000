@@ -5,13 +5,14 @@
  */
 package proyecto;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  *
  * @author Nicholas
  */
-public class OrdenarTiendaAscendente implements Comparator<Tienda> {
+public class OrdenarTiendaAscendente implements Serializable ,Comparator<Tienda> {
 
     @Override
     public int compare(Tienda o1, Tienda o2) {

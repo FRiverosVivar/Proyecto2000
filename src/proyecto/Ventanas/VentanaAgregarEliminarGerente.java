@@ -9,6 +9,8 @@ import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import proyecto.Empresa;
+import proyecto.ExceptionRutValido;
+import proyecto.ExceptionSoloLetras;
 
 /**
  *
@@ -125,10 +127,14 @@ public class VentanaAgregarEliminarGerente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"No es posible crear un Gerente con algun campo vacio.");
             return;
         }
-        
-        if(best.agregarGerente(nombre, rut, sueldo) == -1){
-            JOptionPane.showMessageDialog(null,"Ya esta registrado un gerente con ese rut.");
-            return;
+        try{
+            
+            if(best.agregarGerente(nombre, rut, sueldo) == -1){
+                JOptionPane.showMessageDialog(null,"Ya esta registrado un gerente con ese rut.");
+                return;
+            }
+        }catch(ExceptionRutValido | ExceptionSoloLetras e){
+            e.printStackTrace();
         }
         
         JOptionPane.showMessageDialog(null,"Gerente Agregado Exitosamente.");

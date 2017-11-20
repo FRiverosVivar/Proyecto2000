@@ -55,6 +55,7 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         mn_jB_agregarTienda = new javax.swing.JButton();
         mn_jB_VerTiendas = new javax.swing.JButton();
         mn_jB_AgregarGerente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         mn_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,6 +117,14 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         });
         mn_overlay.add(mn_jB_AgregarGerente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 120, -1));
 
+        jButton1.setText("Ver % de ganancias total");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        mn_overlay.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, -1, -1));
+
         getContentPane().add(mn_overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 610));
 
         mn_bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mn_bg.jpg"))); // NOI18N
@@ -131,18 +140,20 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         
         FileOutputStream fos;
         try {
-            fos = new FileOutputStream(new File("Tiendas.txt"));
+            fos = new FileOutputStream(new File("Empresa.txt"));
             try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                    oos.writeObject(best);
+                oos.writeObject(best);
                 oos.close();
-                
-                fos.close();
             } catch (IOException ex) {
                 Logger.getLogger(ventanaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
+            fos.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         System.exit(0);
     }//GEN-LAST:event_mn_jB_cerrarsesionActionPerformed
 
@@ -176,6 +187,10 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mn_jB_AgregarGerenteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null,"Se genera: "+best.calcularPorcentajeGananciaTotal()+"% de capital por Tienda aproximadamente");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
@@ -200,6 +215,7 @@ public class ventanaMenuPrincipal extends javax.swing.JFrame {
         });
     }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel mn_bg;
     private javax.swing.JButton mn_jB_AgregarGerente;
     private javax.swing.JButton mn_jB_MenuTienda;

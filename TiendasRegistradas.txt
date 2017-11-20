@@ -1,1 +1,1 @@
-[ID: DrugStore] - [Gerente: steve jobs] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0]
+[ID: 234] - [Gerente: dassdaad] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0][ID: 4444] - [Gerente: sdasdadd] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0][ID: oopop] - [Gerente: xloool] - [Trabajadores Registrados: 0] - [Inventario de la Tienda: 0]
