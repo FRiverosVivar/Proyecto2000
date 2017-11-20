@@ -83,7 +83,15 @@ public class Empresa implements Serializable{
         DefaultListModel<String> mdl = listaTiendas.modelVendedores(ID);        
         return mdl;
     }
-    public void mostrarTiendasEnArchivo() throws IOException{        
+    public void mostrarTiendasEnArchivo() throws IOException{
+        listaTiendas.setOrdenarArray(new OrdenDesc());
+        listaTiendas.mostrarTiendasEnArchivo();           
+    }
+    public void mostrarTiendasEnArchivoOrdenadoPorGananciasAscendente() throws IOException{
+        listaTiendas.setOrdenarArray(new OrdenarAsc());
+        listaTiendas.mostrarTiendasEnArchivo();           
+    }
+    public void mostrarTiendasEnArchivoOrdenadoPorGananciasDescendentes() throws IOException{        
         listaTiendas.mostrarTiendasEnArchivo();           
     }
     public void guardarTiendas() throws IOException{
@@ -163,6 +171,7 @@ public class Empresa implements Serializable{
     public int modificarVendedor(String nombre, String rut, String sueldo,String rutnuevo,String IDTienda){
         return listaTiendas.modificarVendedor(nombre, rut, sueldo,rutnuevo,IDTienda);
     }
+
 }
 /*
     public Tienda obtenerTiendaMayorGanancia(){

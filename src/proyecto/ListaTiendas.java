@@ -26,10 +26,18 @@ import javax.swing.JOptionPane;
  */
 public class ListaTiendas implements Serializable{
     private ArrayList<Tienda> listaTiendas;
+    IOrdenarArray Orden;
     
     public ListaTiendas(){
         listaTiendas = new ArrayList();
     }
+    public void setOrdenarArray(IOrdenarArray Orden){
+      this.Orden=Orden;  
+    }
+    public void mostrarOrdenado(){
+        Orden.OrdenarArrayL(listaTiendas);
+    }
+    
     /*****SOBRECARGA
      * @param GerenteTienda
      * @param DireccionTienda

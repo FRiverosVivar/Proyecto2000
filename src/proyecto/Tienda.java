@@ -11,7 +11,7 @@ import javax.swing.DefaultListModel;
 *
 *
 */
-public class Tienda implements Serializable{
+public class Tienda implements Serializable, Comparable<Tienda>{
     
     private String direc;
     private String id;
@@ -46,6 +46,9 @@ public class Tienda implements Serializable{
     }
     public String getDirecc() {
     	return direc;
+    }
+    public int getPortentajeGanancia() {
+    	return porcentajeGanancia;
     }
     public int obtenerTamañoListaVendedores(){
         return listaVendedores.obtenerTamañoListaVendedores();
@@ -136,6 +139,12 @@ public class Tienda implements Serializable{
     }
     public void exportarArticulos() throws IOException{
         listaArticulos.guardarArchivoArticulos();
+    }
+
+    @Override
+    public int compareTo(Tienda o) {
+        return this.id.compareTo(o.id);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

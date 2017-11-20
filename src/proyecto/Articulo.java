@@ -68,4 +68,5 @@ public class Articulo implements Serializable {
     public void setVecesVendido(int vecesVendido){
         this.vecesVendido=vecesVendido;
     }
+
 }
